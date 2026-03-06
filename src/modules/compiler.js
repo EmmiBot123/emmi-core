@@ -30,15 +30,32 @@ export const CompilerBridge = (() => {
 
     async function checkServer() {
         try {
+            console.log('[EMMI] Checking bridge at ' + SERVER_URL + '/health');
             const r = await fetch(SERVER_URL + '/health', { signal: AbortSignal.timeout(2000) });
             serverOnline = r.ok;
+            if (serverOnline) console.log('[EMMI] Bridge online via 127.0.0.1/health');
         } catch (e) {
-            // Fallback: some bridge versions might only have /ports
+            console.warn('[EMMI] 127.0.0.1/health failed:', e.name, e.message);
+
+            // Try localhost fallback in case bridge is bound to names
             try {
-                const r2 = await fetch(SERVER_URL + '/ports', { signal: AbortSignal.timeout(2000) });
-                serverOnline = r2.ok;
-            } catch (e2) {
-                serverOnline = false;
+                const ALT_URL = 'http://localhost:3456';
+                console.log('[EMMI] Trying fallback to ' + ALT_URL + '/health');
+                const rAlt = await fetch(ALT_URL + '/health', { signal: AbortSignal.timeout(2000) });
+                serverOnline = rAlt.ok;
+                if (serverOnline) console.log('[EMMI] Bridge online via localhost/health');
+            } catch (eAlt) {
+                console.warn('[EMMI] localhost/health failed:', eAlt.name, eAlt.message);
+
+                // Final fallback: try /ports on 127.0.0.1
+                try {
+                    const r2 = await fetch(SERVER_URL + '/ports', { signal: AbortSignal.timeout(2000) });
+                    serverOnline = r2.ok;
+                    if (serverOnline) console.log('[EMMI] Bridge online via 127.0.0.1/ports');
+                } catch (e2) {
+                    serverOnline = false;
+                    console.error('[EMMI] All bridge checks failed. If on HTTPS, ensure "Insecure content" is Allowed for this site.');
+                }
             }
         }
         updateStatus(serverOnline);
