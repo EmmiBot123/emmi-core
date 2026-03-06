@@ -176,9 +176,9 @@ Code.loadScript = function (src) {
 
 Code.loadLanguageScripts = function () {
   return Promise.all([
-    Code.loadScript('/lang/msg_' + Code.LANG + '.js'),
-    Code.loadScript('/lang/Blockly_' + Code.LANG + '.js'),
-    Code.loadScript('/lang/microbit_' + Code.LANG + '.js'),
-    Code.loadScript('/lang/Arduino_' + Code.LANG + '.js')
+    Code.loadScript('./lang/msg_' + Code.LANG + '.js'),
+    Code.loadScript('./lang/Blockly_' + Code.LANG + '.js'),
+    Code.loadScript('./lang/microbit_' + Code.LANG + '.js'),
+    Code.loadScript('./lang/Arduino_' + Code.LANG + '.js')
   ]);
 };
