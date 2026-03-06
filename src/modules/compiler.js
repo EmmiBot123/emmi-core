@@ -29,15 +29,20 @@ export const CompilerBridge = (() => {
     }
 
     async function checkServer() {
+        console.log('[EMMI] Checking bridge at ' + SERVER_URL);
         try {
             const r = await fetch(SERVER_URL + '/health', { signal: AbortSignal.timeout(2000) });
             serverOnline = r.ok;
-        } catch {
+            if (serverOnline) console.log('[EMMI] Bridge online via /health');
+        } catch (e) {
+            console.warn('[EMMI] /health failed:', e.message);
             // Fallback: some bridge versions might only have /ports
             try {
                 const r2 = await fetch(SERVER_URL + '/ports', { signal: AbortSignal.timeout(2000) });
                 serverOnline = r2.ok;
-            } catch {
+                if (serverOnline) console.log('[EMMI] Bridge online via /ports');
+            } catch (e2) {
+                console.warn('[EMMI] /ports failed:', e2.message);
                 serverOnline = false;
             }
         }
