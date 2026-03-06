@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/ico" href="/media/app.ico" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EMMI BOT - Web-based Arduino Blockly IDE with AI assistant" />
+  <title>EMMI BOT - Arduino IDE</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Vendor: Blockly + Generators (must load before blocks) -->
+  <script src="/vendor/blockly.min.js"></script>
+  <script src="/vendor/blocks.min.js"></script>
+  <script src="/vendor/blockly_msg_en.js"></script>
+  <script>
+    window.goog = window.goog || {
+      provide: function (n) {
+        var parts = n.split('.');
+        var cur = window;
+        for (var i = 0; i < parts.length; i++) {
+          cur = cur[parts[i]] = cur[parts[i]] || {};
+        }
+      },
+      require: function () { },
+      isArray: function (val) { return Array.isArray(val); },
+      isString: function (val) { return typeof val === 'string'; }
+    };
+  </script>
+  <script src="/vendor/type.js"></script>
+  <script src="/vendor/types.js"></script>
+  <script src="/vendor/typings.js"></script>
+  <script src="/vendor/generate_python.js"></script>
+  <script src="/vendor/generate_java.js"></script>
+  <script src="/vendor/generate_cpp.js"></script>
+  <script src="/vendor/prettify.min.js"></script>
+
+  <!-- Board profiles (must load before blocks) -->
+  <script src="/vendor/boards.js"></script>
+
+  <!-- Vendor: ACE Editor -->
+  <script src="/vendor/ace.js"></script>
+  <script src="/vendor/ext-language_tools.js"></script>
+
+  <!-- Block definitions & generators (loaded from public) -->
+  <script src="/blocs/blockly_blocs.js"></script>
+  <script src="/blocs/arduino_blocs.js"></script>
+  <script src="/blocs/arduino_generateurs_cpp.js"></script>
+  <script src="/blocs/arduino_generateurs_python.js"></script>
+  <script src="/blocs/blockly_generateurs_cpp.js"></script>
+  <script src="/blocs/blockly_generateurs_python.js"></script>
+  <script src="/blocs/blockly_generateurs_java.js"></script>
+  <script src="/blocs/audio.js"></script>
+  <script src="/blocs/analogkey.js"></script>
+  <script src="/blocs/leds.js"></script>
+  <script src="/blocs/RTTTL.js"></script>
+  <script src="/blocs/sensors.js"></script>
+  <script src="/blocs/softBT.js"></script>
+  <script src="/blocs/SerialUSB.js"></script>
+  <script src="/blocs/SoftwareSerial.js"></script>
+  <script src="/blocs/OpenSmartMP3.js"></script>
+  <script src="/blocs/MP3YX5300.js"></script>
+  <script src="/blocs/ST7735.js"></script>
+  <script src="/blocs/matrix.js"></script>
+  <script src="/blocs/MAX7219.js"></script>
+  <script src="/blocs/TCS34725.js"></script>
+  <script src="/blocs/HMC5883.js"></script>
+  <script src="/blocs/RFID.js"></script>
+  <script src="/blocs/gyro.js"></script>
+  <script src="/blocs/GPS.js"></script>
+  <script src="/blocs/ESPFunctions.js"></script>
+  <script src="/blocs/DisplayTM1637.js"></script>
+  <script src="/blocs/RadioTEA5767.js"></script>
+  <script src="/blocs/Lcd_I2C.js"></script>
+  <script src="/blocs/Keyboard_and_mouse.js"></script>
+  <script src="/blocs/APDS9960.js"></script>
+  <script src="/blocs/mu_vision_sensor.js"></script>
+  <script src="/blocs/remoteControl.js"></script>
+  <script src="/blocs/RTC_DS3231.js"></script>
+  <script src="/blocs/InternalRTC.js"></script>
+  <script src="/blocs/html.js"></script>
+  <script src="/blocs/otto.js"></script>
+  <script src="/blocs/ottoesp.js"></script>
+  <script src="/blocs/oled.js"></script>
+  <script src="/blocs/encoder.js"></script>
+  <script src="/blocs/motor.js"></script>
+  <script src="/blocs/escornabot.js"></script>
+  <script src="/blocs/neopixel.js"></script>
+  <script src="/blocs/MQTT.js"></script>
+  <script src="/blocs/Thingspeak.js"></script>
+  <script src="/blocs/Firebase.js"></script>
+  <script src="/blocs/Telegram.js"></script>
+  <script src="/blocs/OpenWeather.js"></script>
+  <script src="/blocs/IFTTT.js"></script>
+  <script src="/blocs/NTP.js"></script>
+  <script src="/blocs/WifiBasic.js"></script>
+  <script src="/blocs/WifiServer.js"></script>
+  <script src="/blocs/EspNow.js"></script>
+  <script src="/blocs/Alexa.js"></script>
+  <script src="/blocs/text.js"></script>
+  <script src="/vendor/typing.js"></script>
+  <script src="/vendor/hexlify.js"></script>
+  <script src="/vendor/intel-hex.browser.js"></script>
+
+  <!-- Language -->
+  <script src="/lang/code.js"></script>
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+
+<body>
+  <!-- ========= TOP TITLE BAR ========= -->
+  <div id="toptitle">
+    <div id="title">
+      <div class="img">
+        <a href="https://eurekaminds.in/" target="_blank">
+          <img src="/media/icon.png" alt="Logo" />
+        </a>
+      </div>
+    </div>
+    <div id="title-bar-btns">
+      <span id="server-status" class="server-status" title="Compiler server status">⬤ Offline</span>
+    </div>
+  </div>
+
+  <!-- ========= TOOLBAR ========= -->
+  <div id="header">
+    <div id="btn_all">
+      <!-- Level dropdown -->
+      <div class="dropdown" id="levelDropdownWrap">
+        <button id="btn_level_main" class="btn btn-tool" title="Select level">
+          <span id="levelText">Level 1</span>
+          <span class="levelArrow">▾</span>
+        </button>
+        <div class="dropdown-menu" id="levelDropdown">
+          <a class="dropdown-item" href="#" data-level="1">Level 1</a>
+          <a class="dropdown-item" href="#" data-level="2">Level 2</a>
+          <a class="dropdown-item" href="#" data-level="3">Level 3</a>
+        </div>
+      </div>
+
+      <!-- Hidden level buttons for logic reuse -->
+      <button id="btn_level1" style="display:none"></button>
+      <button id="btn_level2" style="display:none"></button>
+      <button id="btn_level3" style="display:none"></button>
+
+      <!-- Language selector -->
+      <select id="languageMenu" title="Change language"></select>
+
+      <!-- Examples -->
+      <button id="btn_example" class="btn btn-tool" title="Examples">
+        <span class="fa fa-graduation-cap"></span>
+      </button>
+
+      <!-- Project name -->
+      <input id="title-project-name" type="text" placeholder="Project name" value="" />
+
+      <!-- File operations -->
+      <button id="btn_saveXML" class="btn btn-tool" title="Save">
+        <span class="fa fa-floppy-disk"></span>
+      </button>
+      <button id="btn_new" class="btn btn-tool" title="New">
+        <span class="fa fa-file"></span>
+      </button>
+      <button id="btn_fakeload" class="btn btn-tool" title="Open">
+        <span class="fa fa-folder-open"></span>
+      </button>
+      <input type="file" id="load" accept=".bloc,.xml,.py,.ino" style="display: none;" />
+
+      <!-- Undo/Redo -->
+      <button id="btn_undo" class="btn btn-tool" title="Undo">
+        <span class="fa fa-rotate-left"></span>
+      </button>
+      <button id="btn_redo" class="btn btn-tool" title="Redo">
+        <span class="fa fa-rotate-right"></span>
+      </button>
+
+      <!-- Board selector -->
+      <select id="boards" class="select-tool">
+        <option value="MRTnodev1">EMMI BOT V1</option>
+        <option value="MRTnode">EMMI BOT V2</option>
+        <option value="MRTnodesensor">SENSOR BOARD</option>
+        <option value="MRTnodeflipper">FLIPPER</option>
+        <option value="OttoESP">ESP8266</option>
+        <option value="Ottoky">Ottoky ESP32</option>
+        <option value="mrtduino">MRTduino</option>
+        <option value="uno_bt">ZUM BT-328</option>
+        <option value="nanooptiboot">♾ Nano</option>
+        <option value="nano">♾ Nano Old</option>
+        <option value="uno">♾ Uno</option>
+        <option value="nona4809">♾ Nano Every</option>
+        <option value="leonardo">♾ Leonardo</option>
+        <option value="micro">♾ Micro</option>
+        <option value="mega">♾ Mega</option>
+        <option value="mkrwifi1010">♾ MKR WiFi</option>
+        <option value="mini">Arduino Mini</option>
+        <option value="wemosD1miniPro">WeMos D1 mini</option>
+        <option value="pro8">Arduino Pro 3.3V</option>
+        <option value="yun">Arduino Yun</option>
+      </select>
+
+      <!-- Port selector -->
+      <select id="portserie" class="select-tool"></select>
+
+      <!-- Verify & Upload -->
+      <button id="btn_verify" class="btn btn-action" title="Verify code">
+        <span class="fa fa-check"></span>
+      </button>
+      <button id="btn_flash" class="btn btn-action" title="Upload code">
+        <span class="fa fa-arrow-right"></span>
+      </button>
+
+      <span id="survol" class="tooltip-text"></span>
+    </div>
+
+    <!-- Right-side buttons -->
+    <div id="btn_group">
+      <button id="btn_term" class="btn btn-tool" title="Serial Monitor">
+        <span class="fa fa-magnifying-glass"></span>
+      </button>
+      <button id="btn_preview" class="btn btn-tool" title="Code Preview">
+        <span class="fa fa-code"></span>
+      </button>
+      <button id="btn_search" class="btn btn-tool" title="Search" style="display:none;">
+        <span class="fa fa-binoculars"></span>
+      </button>
+      <a href="/EMMI_Bridge_Installer.exe" download="EMMI_Bridge_Installer.exe" id="btn_download_bridge" class="btn btn-download" title="Download EMMI Bridge Installer">
+        <span class="fa fa-download"></span>
+      </a>
+      <button id="btn_ai_chat" class="btn btn-ai" title="AI Assistant">
+        <span class="fa fa-robot"></span>
+      </button>
+
+      <!-- Block/Code toggle -->
+      <button id="codeORblock" class="btn btn-toggle" title="Switch Block/Code">
+        <span class="fa fa-puzzle-piece"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========= MAIN BODY ========= -->
+  <div id="divBody">
+    <!-- Blockly workspace -->
+    <div id="content_blocks">
+      <!-- Code preview overlay -->
+      <div id="toggle" class="code-preview-panel" style="display: none;">
+        <div id="lang_toggle" class="lang-toggle-group">
+          <button class="lang-btn active" data-lang="arduino">C</button>
+          <button class="lang-btn" data-lang="micropython">Py</button>
+          <button class="lang-btn" data-lang="java">Java</button>
+        </div>
+        <pre id="pre_previewArduino"></pre>
+        <div class="preview-actions">
+          <button id="btn_saveino" class="btn btn-sm" title="Save code">
+            <span class="fa fa-floppy-disk"></span>
+          </button>
+          <button id="btn_copy" class="btn btn-sm" title="Copy code">
+            <span class="fa fa-copy"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code editor (ACE) -->
+    <div id="content_code" style="display: none;">#enter your code here</div>
+  </div>
+
+  <!-- ========= MODALS ========= -->
+  <!-- Message modal -->
+  <div class="modal-overlay" id="messageModal" style="display:none;">
+    <div class="modal-box modal-sm">
+      <div class="modal-body">
+        <div id="messageDIV"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-modal-close" data-dismiss="messageModal">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example modal -->
+  <div class="modal-overlay" id="exampleModal" style="display:none;">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <span class="fa fa-file-lines fa-2x modal-title-icon"></span>
+        <button class="modal-close" data-dismiss="exampleModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table">
+            <tbody id="includedContent"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card / Board info modal -->
+  <div class="modal-overlay" id="cardModal" style="display:none;">
+    <div class="modal-box modal-md">
+      <div class="modal-header">
+        <span class="fa fa-microchip fa-2x modal-title-icon"></span>
+        <button class="modal-close" data-dismiss="cardModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="arduino_card_picture_div">
+          <img id="arduino_card_mini_picture" />
+        </div>
+        <div id="infoboard"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= AI CHAT PANEL ========= -->
+  <div id="ai-chat-panel" class="ai-chat-panel">
+    <div class="ai-chat-header">
+      <span class="ai-chat-title"><i class="fa fa-robot"></i> AI Arduino Assistant</span>
+      <div class="ai-chat-header-btns">
+        <button id="btn_ai_sync_clipboard" class="ai-header-btn" title="Paste & Insert from Clipboard"><i
+            class="fa fa-clipboard-check"></i></button>
+        <button id="btn_ai_settings" class="ai-header-btn" title="Settings"><i class="fa fa-gear"></i></button>
+        <button id="btn_ai_close" class="ai-header-btn" title="Close"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div id="ai-chat-messages" class="ai-chat-messages">
+      <div class="ai-message ai-bot">
+        <div class="ai-avatar"><i class="fa fa-robot"></i></div>
+        <div class="ai-bubble">Hi! I'm your Arduino AI assistant. I can help you write code for
+          <strong>Arduino, ESP8266, and ESP32</strong> boards. Just describe what you need!
+        </div>
+      </div>
+    </div>
+    <div class="ai-chat-input-area" style="flex-direction: column; gap: 8px;">
+      <div style="display: flex; gap: 4px; width: 100%;">
+        <select id="ai-chat-provider"
+          style="flex: 1; padding: 4px; font-size: 12px; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
+          <option value="local" style="background: #1a1a2e;">Direct (In-App API)</option>
+          <option value="chatgpt" style="background: #1a1a2e;">ChatGPT (External)</option>
+          <option value="claude" style="background: #1a1a2e;">Claude (External)</option>
+          <option value="gemini" style="background: #1a1a2e;">Gemini (External)</option>
+          <option value="grok" style="background: #1a1a2e;">Grok (External)</option>
+        </select>
+        <select id="ai-chat-mode"
+          style="flex: 1; padding: 4px; font-size: 12px; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
+          <option value="code" style="background: #1a1a2e;">Output: Arduino Code</option>
+          <option value="blocks" style="background: #1a1a2e;">Output: Blockly Blocks</option>
+          <option value="chat" style="background: #1a1a2e;">Output: Just Chat</option>
+        </select>
+      </div>
+      <div style="display: flex; gap: 8px; width: 100%;">
+        <textarea id="ai-chat-input" placeholder="Describe what you need..." rows="2"
+          style="flex:1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; padding: 6px; color: #fff; resize: none;"></textarea>
+        <button id="btn_ai_send" class="ai-send-btn" title="Send" style="height: auto; align-self: stretch;"><i
+            class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= PROGRESS & LOG MODAL ========= -->
+  <div id="progressModal" class="modal-overlay" style="display:none;">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <h4 class="modal-title" id="progressTitle"><i class="fa fa-spinner fa-spin"></i> Processing...</h4>
+        <button class="modal-close" data-dismiss="progressModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="progress-container">
+          <div class="progress-bar-wrap">
+            <div id="compilation-progress" class="progress-bar"></div>
+          </div>
+          <div id="progress-status-text" class="progress-status-text">Starting...</div>
+          <div id="progress-error-msg" class="progress-error-msg" style="display:none;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn_close_progress" class="btn btn-primary" style="display:none;"
+          data-dismiss="progressModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Settings modal -->
+  <div class="modal-overlay" id="aiSettingsModal" style="display:none;">
+    <div class="modal-box modal-md">
+      <div class="modal-header">
+        <h4 class="modal-title"><i class="fa fa-gear"></i> AI Settings</h4>
+        <button class="modal-close" data-dismiss="aiSettingsModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="ai-api-provider">API Provider</label>
+          <select class="form-input" id="ai-api-provider">
+            <option value="openrouter">OpenRouter (OpenAI-compatible)</option>
+            <option value="google">Google AI Studio (Gemini)</option>
+            <option value="custom">Custom (OpenAI-compatible)</option>
+          </select>
+        </div>
+        <div class="form-group" id="ai-endpoint-group" style="display:none;">
+          <label for="ai-api-endpoint">API Endpoint URL</label>
+          <input type="text" class="form-input" id="ai-api-endpoint"
+            value="https://openrouter.ai/api/v1/chat/completions" />
+        </div>
+        <div class="form-group">
+          <label for="ai-api-key" id="ai-key-label">API Key</label>
+          <input type="password" class="form-input" id="ai-api-key" placeholder="Enter your key..." />
+        </div>
+        <div class="form-group">
+          <label for="ai-model-company">Company</label>
+          <select class="form-input" id="ai-model-company" style="margin-bottom: 5px;">
+            <option value="openai">OpenAI (GPT-4o, GPT-3.5)</option>
+            <option value="google">Google (Gemini 1.5, Flash)</option>
+            <option value="anthropic">Anthropic (Claude 3.5)</option>
+            <option value="meta">Meta (Llama 3)</option>
+            <option value="custom">Custom / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ai-model-name">Model Name</label>
+          <select class="form-input" id="ai-model-dropdown" style="margin-bottom: 5px;">
+            <!-- Populated by JS -->
+          </select>
+          <input type="text" class="form-input" id="ai-model-name" placeholder="E.g. openai/gpt-4o"
+            value="openai/gpt-4o" style="display:none;" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="aiSettingsModal">Cancel</button>
+        <button id="btn_ai_save_settings" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= SERIAL MONITOR PANEL ========= -->
+  <div id="serial-monitor-panel" class="serial-monitor-panel" style="display:none;">
+    <div class="serial-monitor-header">
+      <span class="serial-title"><i class="fa fa-magnifying-glass"></i> Serial Monitor</span>
+      <div class="serial-header-btns">
+        <select id="serial-baudrate" class="serial-baud-select">
+          <option value="300">300</option>
+          <option value="1200">1200</option>
+          <option value="2400">2400</option>
+          <option value="4800">4800</option>
+          <option value="9600" selected>9600</option>
+          <option value="19200">19200</option>
+          <option value="38400">38400</option>
+          <option value="57600">57600</option>
+          <option value="115200">115200</option>
+        </select>
+        <button id="btn_serial_connect" class="serial-btn" title="Connect"><i class="fa fa-plug"></i></button>
+        <div class="serial-timestamp-wrap">
+          <input type="checkbox" id="serial-timestamp" />
+          <label for="serial-timestamp">Timestamp</label>
+        </div>
+        <button id="btn_serial_clear" class="serial-btn" title="Clear"><i class="fa fa-eraser"></i></button>
+        <button id="btn_serial_close" class="serial-btn" title="Close"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div id="serial-output" class="serial-output"></div>
+    <div class="serial-input-area">
+      <input type="text" id="serial-input" class="serial-input-field" placeholder="Send data..." />
+      <button id="btn_serial_send" class="serial-send-btn">Send</button>
+    </div>
+  </div>
+
+  <!-- App module entry point -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

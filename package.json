@@ -1,0 +1,17 @@
+{
+  "name": "emmi-bot-ide",
+  "version": "2.0.0",
+  "description": "EMMI BOT - Block-based Arduino IDE",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "playwright": "^1.58.2"
+  }
+}

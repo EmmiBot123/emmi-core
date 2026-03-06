@@ -1,0 +1,82 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all-esp8266</toolbox>
+  <block type="base_setup_loop" id="sYpp.M_hPV=wn]G[Y!?e" x="-172" y="110">
+    <statement name="DO">
+      <block type="buzzer_init" id="alRJTf.h_seJUa!z|l8|">
+        <field name="PIN">D5</field>
+      </block>
+    </statement>
+    <statement name="LOOP">
+      <block type="play" id="zndWX/TAuc(nU2W#7jnU">
+        <field name="note">349</field>
+        <field name="tempo">125</field>
+        <next>
+          <block type="play" id="mtN!79:pSQS^*aH5$[9|">
+            <field name="note">349</field>
+            <field name="tempo">125</field>
+            <next>
+              <block type="play" id="ZHG(wh5l-YrsQu{`9hs1">
+                <field name="note">349</field>
+                <field name="tempo">125</field>
+                <next>
+                  <block type="play" id="%6:ws%)_@98skfOoNje:">
+                    <field name="note">261</field>
+                    <field name="tempo">125</field>
+                    <next>
+                      <block type="play" id="p+jGZ.{Kt=Of?fxQ}vKl">
+                        <field name="note">293</field>
+                        <field name="tempo">125</field>
+                        <next>
+                          <block type="play" id=".748~9mD96sW[;ANoJb=">
+                            <field name="note">293</field>
+                            <field name="tempo">125</field>
+                            <next>
+                              <block type="play" id=",Q0[z~G^x)i4fT[pp=-L">
+                                <field name="note">261</field>
+                                <field name="tempo">125</field>
+                                <next>
+                                  <block type="play" id="e%`66doHNv=BSjAtQ$dU">
+                                    <field name="note">440</field>
+                                    <field name="tempo">125</field>
+                                    <next>
+                                      <block type="play" id="_u^b]QysqhXhCV%p#d)I">
+                                        <field name="note">440</field>
+                                        <field name="tempo">125</field>
+                                        <next>
+                                          <block type="play" id="2IcL$^uO~Ie[yz%*9xk|">
+                                            <field name="note">392</field>
+                                            <field name="tempo">125</field>
+                                            <next>
+                                              <block type="play" id="ky)CxNxy^!:^`E]GxjFC">
+                                                <field name="note">392</field>
+                                                <field name="tempo">125</field>
+                                                <next>
+                                                  <block type="play" id="]dk*V~$,4U#4J7q=E0s[">
+                                                    <field name="note">349</field>
+                                                    <field name="tempo">125</field>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

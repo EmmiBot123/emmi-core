@@ -1,0 +1,103 @@
+[
+  {"source_url":"Emmi V2.bloc","source_text":"01 | Emmi V2 |   ","visible":true},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  {"source_url":"cutesounds.xml","source_text":"01 | 🔈 Cute sounds |   ","visible":false},
+  {"source_url":"melody.xml","source_text":"02 | 🎼 Simple melody |   ","visible":false},
+  {"source_url":"RTTL.xml","source_text":"03 | 🎼 Ring Tone sounds |   ","visible":false},
+  {"source_url":"wheelsmove.xml","source_text":"04 | 🚗 Wheels move |","visible":false},
+  {"source_url":"wheelsavoid.xml","source_text":"05 | 🚗 Wheels avoids |","visible":false},
+  {"source_url":"serialdistance.xml","source_text":"06 | 📏 Serial measure distance |  ","visible":false},
+  {"source_url":"theremin.xml","source_text":"07 | 🎹 Theremin |   ","visible":false},
+  {"source_url":"neopixel.xml","source_text":"08 | 🌈 Color LEDs |","visible":false},
+  {"source_url":"neopixelfunctions.xml","source_text":"09 | 🌈 RGB LED Functions  |","visible":false},
+  {"source_url":"neopixelclockwisecounter.xml","source_text":"10 | 🌈 RGB LED Clockfun  |","visible":false},
+  {"source_url":"servo.xml","source_text":"11 | 🦿 Servo centering |","visible":false},
+  {"source_url":"servosweep.xml","source_text":"12 | 🦿 Servo sweep |  ","visible":false},
+  {"source_url":"Ottocalibrationapp.xml","source_text":"13 | 🤖 Biped calibration |  ","visible":false},
+  {"source_url":"Ottowalk.xml","source_text":"14 | 🤖 Biped walk |  ","visible":false},
+  {"source_url":"Ottodance.xml","source_text":"15 | 🤖 Biped dance |  ","visible":false},
+  {"source_url":"Ottodancerandom.xml","source_text":"16 | 🤖 Biped random dancer |  ","visible":false},
+  {"source_url":"Ottoavoid.xml","source_text":"17 | 🤖 Biped avoids |  ","visible":false},
+  {"source_url":"Ottoavoidpeople.xml","source_text":"18 | 🤖 Biped avoids people |  ","visible":false},
+  {"source_url":"Ottofollow.xml","source_text":"19 | 🌌 The force is with you |  ","visible":false},
+  {"source_url":"ledfade.xml","source_text":"20 | 💡 Single LED fade effect |","visible":false},
+  {"source_url":"ledpot.xml","source_text":"21 | 💡 Single LED + potentiometer |","visible":false},
+  {"source_url":"ledfadepot.xml","source_text":"22 | 💡 Single LED + potentiometer fade effect |","visible":false},
+  {"source_url":"neopixelgame.xml","source_text":"23 | 🌈 RGB LED Game  |","visible":false},
+  {"source_url":"Police_Siren.xml","source_text":"24 | 🌈 RGB LED police siren |","visible":false},
+  {"source_url":"ninja.xml","source_text":"25 | 🐱‍👤 Ninja basic |","visible":false},
+  {"source_url":"ninjaapp.xml","source_text":"26 | 🐱‍👤 Ninja App |","visible":false},
+  {"source_url":"humanoiddance.xml","source_text":"27 | 🦾 Humanoid dance |","visible":false},
+  {"source_url":"humanoidsound.xml","source_text":"28 | 🦾 Humanoid react to sounds |","visible":false},
+  {"source_url":"servoadvanced.xml","source_text":"29 | 🦿 Servo advanced control |  ","visible":false},
+  {"source_url":"touch.xml","source_text":"30 | 👇 Touch sensor interaction |","visible":false},
+  {"source_url":"noise.xml","source_text":"31 | 👏 Sound sensor interaction |","visible":false},
+  {"source_url":"serialnoise.xml","source_text":"32 | 👏 Serial sound sensor readings |","visible":false},
+  {"source_url":"touchsoundtest.xml","source_text":"33 | 👇 Touch & 👏sound sensor test |","visible":false},
+  {"source_url":"touchsoundultra.xml","source_text":"34 | 🦇 Ultrasonic, 👇touch & 👏sound sensors |","visible":false},
+  {"source_url":"matrixeyestest.xml","source_text":"35 | 👀 16x8 LED matrix test |","visible":false},
+  {"source_url":"matrixeyes.xml","source_text":"36 | 👀 16x8 LED matrix emotions |","visible":false},
+  {"source_url":"matrixeyescounter.xml","source_text":"37 | 👀 16x8 LED matrix counter |","visible":false},
+  {"source_url":"eyesall.xml","source_text":"38 | 👀 Otto eyes all emotions |","visible":false},
+  {"source_url":"fizzbuzz.xml","source_text":"39 | 🎮 Fizzbuzz |","visible":false},
+  {"source_url":"oled.xml","source_text":"40 | 🖥️ OLED display |","visible":false},
+  {"source_url":"oledshapes.xml","source_text":"41 | 🖥️ OLED display shapes |","visible":false},
+  {"source_url":"oledframe.xml","source_text":"42 | 🖥️ OLED display frame |   ","visible":false},
+  {"source_url":"oledicon.xml","source_text":"43 | 🖥️ OLED display icon |   ","visible":false},
+  {"source_url":"oledanimation.xml","source_text":"44 | 🖥️ OLED display animation |   ","visible":false},
+  {"source_url":"oledanimationwalk.xml","source_text":"45 | 🖥️ OLED display animation walk |   ","visible":false},
+  {"source_url":"oledmouth.xml","source_text":"46 | 🖥️ OLED display mouth |   ","visible":false},
+  {"source_url":"oledmouths.xml","source_text":"47 | 🖥️ OLED display mouths |   ","visible":false},
+  {"source_url":"oledlogo.xml","source_text":"48 | 🖥️ OLED display Logo animation |   ","visible":false},
+  {"source_url":"Oledspectrumgraph.xml","source_text":"49 | 🖥️ OLED display Spectrum graph |   ","visible":false},
+  {"source_url":"oledgyro.xml","source_text":"50 | 🖥️ OLED display with Gyro sensor |   ","visible":false},
+  {"source_url":"servocalibration.xml","source_text":"51 | 🖥️ OLED display with Servo motor |   ","visible":false},
+  {"source_url":"dhttemp.xml","source_text":"52 | 🌡️ DHT Temperature in OLED display |","visible":false},
+  {"source_url":"dfmini.xml","source_text":"53 | 🔊 MP3 DF mini basics |","visible":false},
+  {"source_url":"dfminitriggers.xml","source_text":"54 | 🔊 MP3 DF mini Triggers |","visible":false},
+  {"source_url":"irda.xml","source_text":"55 | 🎮 Remote infrared control |","visible":false},
+  {"source_url":"bluetooth.xml","source_text":"56 | 📱 Bluetooth blocks|","visible":false},
+  {"source_url":"IFTTT.xml","source_text":"57 |  ☁️ IoT IFTTT | ","visible":false},
+  {"source_url":"MQTT.xml","source_text":"58 |  ☁️ IoT MQTT |","visible":false},
+  {"source_url":"NTP.xml","source_text":"59 |  ☁️ IoT NTP | ","visible":false},
+  {"source_url":"Thingspeak.xml","source_text":"60 |  ☁️ Thingspeak |","visible":false},
+  {"source_url":"Telegram.xml","source_text":"61 | ☁️ Telegram |","visible":false},
+  {"source_url":"Open_weather.xml","source_text":"62 | 🌨️ Open Weather |","visible":false},
+  {"source_url":"serverOTA.xml","source_text":"63 | 🌐 Server and OTA ESP8266 |","visible":false},
+  {"source_url":"matrixtest.xml","source_text":"64 | 👄 8x8 LED matrix test |","visible":false},
+  {"source_url":"matrixmouths.xml","source_text":"65 | 👄 8x8 LED mouth emotions | ","visible":false},
+  {"source_url":"matrixsing.xml","source_text":"66 | 👄 8x8 LED mouth sing |","visible":false},
+  {"source_url":"matrixcounter.xml","source_text":"67 | 👄 8x8 LED mouth variable counter |","visible":false},
+  {"source_url":"matrixhands.xml","source_text":"68 | 🧼 8x8 LED mouth wash hands counter |","visible":false},
+  {"source_url":"ottoky.xml","source_text":"69 | 👓 Ottoky happy |","visible":false},
+  {"source_url":"ottokysense.xml","source_text":"70 | 🎛️ Ottoky sense |","visible":false},
+  {"source_url":"ottokyiotclock.xml","source_text":"71 | 🌐 Ottoky clock |","visible":false},
+  {"source_url":"ottokyavoid.xml","source_text":"72 | 🧠 Ottoky avoid |","visible":false},
+  {"source_url":"ottokydht.xml","source_text":"73 | 🌡️ Ottoky temperature |","visible":false},
+  {"source_url":"oledlaser.xml","source_text":"74 | ⚡ OLED display with Laser sensor |   ","visible":false},
+  {"source_url":"Laser_Theremin.xml","source_text":"75 | ⚡ Laser sensor into Theremin |","visible":false},
+  {"source_url":"TFTicon.xml","source_text":"76 | 📺 TFT display Icon |  ","visible":false},
+  {"source_url":"TFTAnimation.xml","source_text":"77 | 📺 TFT display animation |  ","visible":false},
+  {"source_url":"MUvision.xml","source_text":"78 | 👁️ MU vision AI camera |","visible":false}
+]

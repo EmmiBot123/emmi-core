@@ -1,0 +1,1127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolbox>
+	<parametre id="defaultCategories1">CAT_ARDUINO,CAT_LINE,FORMOTOR,CAT_ultrason,RGB,CAT_OLED_eyes,FORLDR,CAT_SPEAKER,CAT_ARDUINO_TIME,CAT_ARDUINO_IN,CAT_LOGIC,CAT_MATH,CAT_VARIABLES,CAT_com,CAT_iot</parametre>
+    <!-- <parametre id="defaultCategories2">CAT_ARDUINO,CAT_OTTO_NINJA,CAT_ARDUINO_TIME,CAT_ARDUINO_IN,CAT_LOGIC,CAT_MATH,CAT_TEXT,CAT_FUNCTIONS,CAT_VARIABLES,CAT_SENSORS,CAT_servo,CAT_LED,CAT_Displays,CAT_AUDIO,CAT_com,CAT_iot</parametre>
+    <parametre id="defaultCategories3">CAT_ARDUINO,CAT_OTTO_NINJA,CAT_ARDUINO_TIME,CAT_ARDUINO_IN,CAT_LOGIC,CAT_MATH,CAT_TEXT,CAT_FUNCTIONS,CAT_VARIABLES,CAT_TAB,CAT_SENSORS,CAT_servo,CAT_actionneur,CAT_ARDUINO_moteur,CAT_KEYBOARD,CAT_LED,CAT_Displays,CAT_AUDIO,CAT_com,CAT_iot,CAT_MUVISION,CAT_STOCKAGE</parametre> -->
+
+	<category name="CAT_ARDUINO" colour="#2d2d64">
+		<block type="base_setup_loop"></block>
+		<block type="base_define"></block>
+		<block type="base_code"></block>
+		<block type="base_code_entree"></block>
+	</category>
+	<category name="CAT_LINE" colour="#54BCF7">
+			<block type="IR_status_sensor2"><field name="PIN_IR">34</field></block>
+			<block type="IR_status_sensor2"><field name="PIN_IR">35</field></block>
+		<block type="IR_sensor2"></block>
+			</category>
+	<category name="FORMOTOR" colour="#2d2d64">
+		<block type="flipperservo_2wheels_init">
+				<field name="PINL">16</field>
+				<field name="PINR">2</field>
+				<field name="PINL1">17</field>
+				<field name="PINR2">4</field>
+				</block>
+							<block type="flipperservo_2wheels"></block>
+		
+							
+	</category>
+
+	<category name="CAT_ultrason" colour="#54BCF7">
+			<block type="ultrasonic_sensor">
+				<field name="PIN_TRIG">25</field>
+				<field name="PIN_ECHO">33</field>
+			</block>
+			<block type="ultrasonic_distance"></block>
+	</category>
+
+
+    
+	<category name="RGB" colour="#00929f">
+		<block type="inout_digital_writev1">
+			<field name="PIN">17</field>
+			<value name="STAT"><shadow type="inout_onoff">	<field name="NUM">1</field>	</shadow></value>
+		</block><block type="inout_digital_writev1">
+			<field name="PIN">18</field>
+			<value name="STAT"><shadow type="inout_onoff">	<field name="NUM">1</field>	</shadow></value>
+		</block><block type="inout_digital_writev1">
+			<field name="PIN">19</field>
+			<value name="STAT"><shadow type="inout_onoff">	<field name="NUM">1</field>	</shadow></value>
+			
+		</block>	
+		
+		
+		
+
+		
+		
+	
+		
+	</category>
+	<category name="CAT_OLED_eyes"  colour="#B655F5">
+	    <block type="OLED_cust"></block>
+		<block type="eyes_faceesp"></block>
+		<block type="eyes_clearesp"></block>
+	</category>
+	
+	
+
+	<category name="FORLDR" colour="#FFBD3B">
+		<block type="inout_analog_read"><field name="broche">34</field></block>
+	</category>
+	<category name="CAT_SPEAKER" colour="#FF63BB">
+
+		    <block type="speaker_init"></block>
+			<block type="VOICE_play">  <field name="PIN_BUZZER">26</field></block>
+			<block type="VOICE_stop">
+				<field name="PIN_BUZZER">26</field>
+			</block>
+			
+			<!--<block type="beep">
+			<value name="PIN"><shadow type="analog_pin"><field name="NUM">13</field></shadow></value></block>-->
+		</category>
+	
+	<category name="CAT_ARDUINO_TIME" colour="#00929f">
+		<block type="base_delay">
+			<value name="DELAY_TIME"><shadow type="math_number">	<field name="NUM">1</field>	</shadow></value>
+		</block>
+		<block type="tempo_sans_delay">
+			<value name="DELAY_TIME"><shadow type="math_number">	<field name="NUM">1</field></shadow></value>
+		</block>
+		<block type="millis_start"></block>
+		<block type="millis"></block>
+		<block type="inout_pulsein"><value name="PIN"><shadow type='analog_pin'>	<field name="NUM">10</field>	</shadow></value>
+		</block>
+	</category>
+	<category name="CAT_ARDUINO_IN" colour="#00929f">
+		<block type="inout_digital_write">
+			<field name="PIN">23</field>
+			<value name="STAT"><shadow type="inout_onoff">	<field name="NUM">1</field>	</shadow></value>
+		</block>
+	<!--	<block type="inout_digital_write2">
+			<value name="PIN"><shadow type='analog_pin'>	<field name="NUM">10</field>	</shadow></value>
+			<value name="STAT"><shadow type="math_number">	<field name="NUM">1</field>	</shadow></value>
+		</block> -->
+		<block type="inout_digital_read">
+			<field name="PIN">33</field>
+		</block>
+	<!--	<block type="inout_digital_read2">
+			<value name="PIN"><shadow type='analog_pin'>	<field name="NUM">10</field>	</shadow></value>
+		</block> -->
+		<block type="inout_analog_write_esp32">
+			<field name="broche">23</field>
+			<value name="NUM"><shadow type="math_number"><field name="NUM">255</field>	</shadow></value>
+		</block>
+	<!--	<block type="inout_analog_write2">
+			<value name="pin"><shadow type="math_number">	<field name="NUM">3</field>	</shadow></value>
+			<value name="NUM"><shadow type="math_number">	<field name="NUM">255</field>	</shadow></value>
+		</block> -->
+		<block type="inout_analog_read"><field name="broche">33</field></block>
+	<!--	<block type="inout_analog_read2">
+			<value name="pin"><shadow type='analog_pin'>	<field name="NUM">A0</field>	</shadow></value>
+		</block> -->
+		<block type="toggle"><field name="PIN">23</field></block>
+	<!--	<block type="toggle2">
+			<value name="PIN"><shadow type="analog_pin">	<field name="NUM">10</field>	</shadow></value>
+		</block> -->
+		<block type="inout_attachInterrupt_esp32"><field name="PIN">33</field></block>
+		<block type="inout_detachInterrupt"><field name="PIN">33</field></block>
+		<block type="ESP_Restart"></block>
+		<block type="ESP32_DeepSleep">
+		<value name="Value"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+		</block>
+
+
+	</category>
+
+	<category name="CAT_LOGIC" colour="#FFBD3B">
+		<block type="controls_if"></block>
+        <block type="controls_repeat_ext">	<value name="TIMES"><shadow type="math_number"><field name="NUM">2</field></shadow></value></block>
+        <block type="controls_whileUntil"></block>
+		<block type="controls_for">
+			<value name="FROM"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="TO"><shadow type="math_number"><field name="NUM">5</field></shadow></value>
+			<value name="BY"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+		</block>
+		<block type="controls_switch"></block>
+		<block type="controls_flow_statements"></block>
+		<block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_null"></block>
+	</category>
+
+	<category name="CAT_MATH" colour="#00D072">
+        <block type="math_number"></block>
+		<block type="inout_angle_maths"></block>
+		<block type="analog_pin"></block>
+		<block type="math_arithmetic"></block>
+        <block type="logic_compare">
+			<value name="B"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+		</block>
+
+		<block type="intervalle"></block>
+				<block type="math_map">
+		<value name="A1"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="A2"><shadow type="math_number"><field name="NUM">1023</field></shadow></value>
+		<value name="B1"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="B2"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+		</block>
+		        <block type="math_modulo"></block>
+		<block type="math_random_int">
+		<value name="FROM"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="TO"><shadow type="math_number"><field name="NUM">99</field></shadow></value>
+		</block>
+		<block type="math_constrain">
+		<value name="LOW"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="HIGH"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+		</block>
+        <block type="math_single"></block>
+        <block type="math_round"></block>
+        <block type="math_trig"></block>
+        <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+		<block type="conversion_tobyte"></block>
+        <block type="conversion_tounsignedint"></block>
+		<block type="conversion_toint"></block>
+        <block type="conversion_tofloat"></block>
+
+    </category>
+
+	<category name="CAT_TEXT" colour="160">
+		<block type="text"></block>
+		<block type="text_char"></block>
+		<block type="conversion_tochar"></block>
+		<block type="conversion_toString"></block>
+		<block type="conversion_toString2"><value name="Decimals"><shadow type="math_number" ><field name="NUM">5</field></shadow></value></block>
+		<block type="text_join"></block>
+        <block type="text_length"></block>
+        <block type="text_isEmpty"></block>
+		<block type="text_append"><value name="TEXT"><shadow type="text"></shadow></value></block>
+		<block type="text_indexOf"><value name="VALUE"></value></block>
+		<block type="text_charAt"><value name="VALUE"></value></block>
+		<block type="text_getSubstring"><value name="STRING"></value></block>
+		<block type="text_changeCase"></block>
+		<block type="text_trim"></block>
+    </category>
+
+	<category name="CAT_FUNCTIONS" custom="PROCEDURE" colour="#FF6680"></category>
+
+	<category name="CAT_VARIABLES" custom="VARIABLE" colour="#FF8900"></category>
+
+	<category name="CAT_TAB" colour="#FF8900">
+		<block type="creer_tableau"></block>
+		<block type="array_create_with"></block>
+		<block type="fixer_tableau"></block>
+		<block type="array_getIndex"></block>
+		<block type="array_getsize"></block>
+		<block type="list_create"></block>
+		<block type="list_set"></block>
+		<block type="list_get"></block>
+		<block type="list_append"></block>
+		<block type="list_size"></block>
+    </category>
+
+	
+<category name="CAT_servo" colour="#4759F5">
+			<block type="servo_move">
+				<value name="DEGREE"><shadow type="inout_angle_maths"><field name="NUM">90</field></shadow></value>
+				<field name="PIN">13</field>
+				<value name="DELAY"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+			<block type="servo_movemicros">
+				<value name="DEGREE"><shadow type="math_number"><field name="NUM">1500</field></shadow></value>
+				<field name="PIN">13</field>
+			</block>
+			<block type="servo_read_degrees">
+				<field name="PIN">13</field>
+			</block>
+			<block type="servo_detach">
+				<field name="PIN">13</field>
+			</block>
+			<block type="servo_attach">
+				<field name="PIN">13</field>
+			</block>
+			<block type="servo_attached">
+				<field name="PIN">13</field>
+			</block>
+			<block type="servo_PWM">
+				<value name="DEGREE"><shadow type="inout_angle_maths"><field name="NUM">90</field></shadow></value>
+			</block>
+
+		</category>
+	<category name="CAT_actionneur" colour="#4759F5">
+
+	<!--		<block type="moteur_dc_init">
+			<value name="ENA"><shadow type="analog_pin"><field name="NUM">11</field></shadow></value>
+			<value name="ENB"><shadow type="analog_pin"><field name="NUM">5</field></shadow></value>
+			<value name="IN1"><shadow type="analog_pin"><field name="NUM">A0</field></shadow></value>
+			<value name="IN2"><shadow type="analog_pin"><field name="NUM">A1</field></shadow></value>
+			<value name="IN3"><shadow type="analog_pin"><field name="NUM">A2</field></shadow></value>
+			<value name="IN4"><shadow type="analog_pin"><field name="NUM">A3</field></shadow></value>
+			</block>
+			<block type="moteur_dc">
+			<value name="speed"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+			</block>
+			<block type="moteur_dc_stop"></block>	 -->
+
+			<block type="motor_MRT_Node_run"><value name="CONTENT"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block>
+			<block type="motor_MRT_Node_stop"></block>
+		</category>
+		<category name="CAT_ARDUINO_moteur" colour="#4759F5">
+				<block type="stepper_configuration">
+					<value name="STEP_RPM"><shadow type="math_number"><field name="NUM">4096</field></shadow></value>
+					<field name="PIN_STEEPER1">23</field>
+					<field name="PIN_STEEPER2">25</field>
+					<field name="PIN_STEEPER3">26</field>
+					<field name="PIN_STEEPER4">27</field>
+				</block>
+				<block type="stepper_speed"><value name="STEPPER_SPEED"><shadow type="math_number"><field name="NUM">20</field></shadow></value></block>
+				<block type="stepper_steps"><value name="STEPPER_STEP"><shadow type="math_number"><field name="NUM">4096</field></shadow></value>  </block>
+			</category>
+
+		<category name="CAT_KEYBOARD" colour="#54BCF7">
+			<block type="keyboard_function_esp32">
+				<value name="SelectedKey"><shadow type="key_pressed"><field name="NUM">A</field></shadow></value>
+			</block>
+			<block type="key_pressed_esp32"></block>
+			<block type="keyboard_text_esp32">
+				<value name="texttoprint"><shadow type="text"><field name="TEXT">I am a Robot</field></shadow></value>
+			</block>
+			<block type="mouse_function_esp32"></block>
+			<block type="mouse_move_esp32">
+			<value name="axis_x"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="axis_y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="wheel"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+		</category>
+
+	<category name="CAT_LED" colour="#B655F5">
+	<!--	<block type="blink"></block>
+		<block type="inout_buildin_led"></block> -->
+		<block type="digital_write0"><field name="PIN">23</field></block>
+	<!--	<block type="digital_write">
+		<value name="PIN"><shadow type="analog_pin"><field name="NUM">23</field></shadow></value>
+		</block> 	-->
+		<block type="digital_write3">
+			<field name="PIN">23</field>
+			<value name="STAT"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+		</block>
+		<block type="led_pwm_esp32">
+			<field name="PWM">23</field>
+			<value name="STAT"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+		</block>
+
+		<category name="CAT_MAX7219" colour="#B655F5">
+			<block type="Init_MAX7219_ledmatrix_esp32">
+			<field name="PIN_CLK">23</field>
+       		<field name="PIN_CS">25</field>
+       		<field name="PIN_DAT">26</field>
+			</block>
+
+			<block type="MAX7219_ledmatrix_brightness_esp32">
+			<value name="BRIGHTNESS"><shadow type="math_number"><field name="NUM">15</field></shadow></value>
+			</block>
+
+			<block type="MAX7219_ledmatrix_clear_esp32"></block>
+
+			<block type="MAX7219_ledmatrix_row_esp32">
+			<value name="Row"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="VALUE"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+
+			<block type="MAX7219_ledmatrix_column_esp32">
+			<value name="Column"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="VALUE"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+
+			<block type="MAX7219_ledmatrix_led_esp32">
+			<value name="Row"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="Column"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+
+			<block type="MAX7219_ledmatrix_draw_esp32"></block>
+			<!-- <block type="MAX7219_animation"></block>  -->
+		</category>
+
+		<category name="CAT_TM1637" colour="#B655F5">
+			<block type="DisplayTM1637_init"><field name="PIN_CLK">23</field><field name="PIN_DIO">25</field><value name="Britghness"><shadow type="math_number"><field name="NUM">7</field></shadow></value></block>
+			<block type="DisplayTM1637_setBrightness"><value name="Brightness"><shadow type="math_number"><field name="NUM">7</field></shadow></value></block>
+			<block type="DisplayTM1637_clear"></block>
+			<block type="DisplayTM1637_set_numberall"><value name="valuenumber"><shadow type="math_number"><field name="NUM">1234</field></shadow></value>
+						<value name="Digit"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+						<value name="Length"><shadow type="math_number"><field name="NUM">4</field></shadow></value>
+			</block>
+			<block type="DisplayTM1637_setsegment"><value name="SegmentDigit"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+						<value name="SegmentValue"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+			<block type="DisplayTM1637_segments"><value name="Digit"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+						<value name="Length"><shadow type="math_number"><field name="NUM">4</field></shadow></value>
+			</block>
+		</category>
+
+
+	<category name="CAT_LEDRGB" colour="#B655F5">
+		<block type="rgb_init_esp32">
+			<field name="rouge">23</field>
+			<field name="vert">25</field>
+			<field name="bleu">26</field>
+		</block>
+
+		<block type="rgb_set">
+			<value name="r"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="v"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="b"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		</block>
+
+		<block type="rgb_setcolor"></block>
+		<block type="rgb_setcolor_anode"></block>
+	</category>
+
+	<category name="CAT_ARDUINO_matrice16x8" colour="#B655F5">
+			<block type="eyes_init"></block>
+						<block type="eyes_face"></block>
+						<block type="eyes_clear"></block>
+						<block type="eyes_rotate"></block>
+						<block type="eyes_brightness">
+						<value name="brightness"><shadow type="math_number"><field name="NUM">15</field></shadow></value>
+						</block>
+						<block type="eyes_blink"></block>
+
+						<block type="eyes_text"></block>
+						<block type="eyes#">
+							<value name="eyes"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
+						</block>
+						<block type="eyesm"></block>
+						<block type="eyes_display"></block>
+						<block type="eyesp">
+							<value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+							<value name="Y"><shadow type="math_number">	<field name="NUM">0</field>	</shadow></value>
+						</block>
+						<block type="eyesc">
+							<value name="X"><shadow type="math_number"><field name="NUM">4</field></shadow></value>
+							<value name="Y"><shadow type="math_number">	<field name="NUM">4</field>	</shadow></value>
+							<value name="R"><shadow type="math_number"><field name="NUM">2</field></shadow></value>
+						</block>
+						<block type="eyesl">
+							<value name="X1"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+							<value name="Y1"><shadow type="math_number">	<field name="NUM">0</field>	</shadow></value>
+							<value name="X2"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+							<value name="Y2"><shadow type="math_number">	<field name="NUM">8</field>	</shadow></value>
+						</block>
+						<block type="eyesr">
+							<value name="X1"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+							<value name="Y1"><shadow type="math_number">	<field name="NUM">0</field>	</shadow></value>
+							<value name="X2"><shadow type="math_number"><field name="NUM">8</field></shadow></value>
+							<value name="Y2"><shadow type="math_number">	<field name="NUM">8</field>	</shadow></value></block>
+			<block type="matrix16x8_init">
+				<field name="PIN_SCL">23</field>
+		   		<field name="PIN_SDA">25</field>
+			</block>
+		</category>
+
+	<category name="CAT_NEOPIXEL" colour="#B655F5">
+			<block type="pixel_init">
+						<field name="pin">10</field>
+			<value name="num"><shadow type="analog_pin"><field name="NUM">8</field></shadow></value>
+		</block>
+		<block type="pixel_show"></block>
+		<block type="pixel_clear"></block>
+		<block type="pixel_setbrightness">
+			<value name="brightness"><shadow type="analog_pin"><field name="NUM">99</field></shadow></value>
+		</block>
+		<block type="pixel_setcolor">
+			<value name="pin"><shadow type="analog_pin"><field name="NUM">0</field></shadow></value>
+		</block>
+		<block type="pixel_rgb">
+			<value name="pin"><shadow type="analog_pin"><field name="NUM">10</field></shadow></value>
+			<value name="R"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+			<value name="G"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+			<value name="B"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+		</block>
+		<block type="pixel_fill"></block>
+	<block type="pixel_fill2">
+			<value name="R"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+			<value name="G"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+			<value name="B"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+			</block>
+				</category>
+			<category name="CAT_NEOMATRIX" colour="#B655F5">
+		<block type="MatrixLED_WS2812B_init_2">
+			<value name="Pin_Matrix_init"><shadow type="analog_pin"><field name="NUM">13</field></shadow></value>
+			<value name="Number_of_Pixels"><shadow type="math_number"><field name="NUM">1</field></shadow>	</value>
+		</block>
+		<block type="MatrixLED_WS2812B_draw"></block>
+		<block type="MatrixLED_WS2812B_setBrightness">
+		<value name="brightness"><shadow type="math_number"><field name="NUM">99</field></shadow></value>
+		</block>
+		<block type="MatrixLED_WS2812B_setPixelColor"><value name="Pixel_number"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="Red"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+		<value name="Green"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+		<value name="Blue"><shadow type="math_number"><field name="NUM">255</field></shadow></value>
+		<value name="brightness"><shadow type="math_number"><field name="NUM">127</field></shadow></value>
+		</block>
+		<block type="MatrixLED_WS2812B_CLEAN"></block>
+	</category>
+	<!--	<category name="CAT_BARGRAPH" colour="#B655F5">
+			<block type="bargraphe">
+			<field name="clk">D0</field>
+       		<field name="data">D1</field>
+			</block>
+			<block type="bargraphe_allume">
+			<value name="del"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+			</block>
+		</category>	-->
+
+
+
+</category>
+
+<category name="CAT_Displays"  colour="#B655F5">
+	<category name="CAT_OLED_U8G" colour="#B655F5">
+		<block type="OLED_init"></block>
+		<block type="OLED_init2"></block>
+		<block type="oled_icon"></block>
+		<block type="OLED_eyes"></block>
+		<block type="OLED_display"></block>
+		<block type="OLED_clear"></block>
+		<block type="OLED_rotate"></block>
+		<block type="OLED_invert"></block>
+		<block type="OLED_scroll"></block>
+
+		<block type="OLED_bitmap2">
+			<value name="x0"> <shadow type="math_number"> <field name="NUM">0</field></shadow></value>
+			<value name="y0"> <shadow type="math_number"><field name="NUM">0</field></shadow> </value>
+			<value name="width"> <shadow type="math_number"> <field name="NUM">128</field> </shadow> </value>
+			<value name="height"> <shadow type="math_number"> <field name="NUM">64</field></shadow> </value>
+		</block>
+		<block type="OLED_data">
+			<value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="Y"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+			<value name="height"> <shadow type="math_number"> <field name="NUM">1</field></shadow> </value>
+			<value name="print"><shadow type="text"><field name="TEXT">Hello Otto</field></shadow></value>
+		</block>
+		<block type="OLED_pixel">
+			<value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="Y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		</block>
+		<block type="OLED_symbol">
+			<value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="Y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="height"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			<value name="print"><shadow type="math_number"><field name="NUM"> 3</field></shadow></value>
+		</block>
+		<block type="OLED_circle">
+			<value name="X"><shadow type="math_number"><field name="NUM">32</field></shadow></value>
+			<value name="Y"><shadow type="math_number"><field name="NUM">32</field></shadow></value>
+			<value name="width"><shadow type="math_number"><field name="NUM">30</field></shadow></value>
+		</block>
+		<block type="OLED_line">
+			<value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="Y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="width"><shadow type="math_number"><field name="NUM">90</field></shadow></value>
+			<value name="height"><shadow type="math_number"><field name="NUM">50</field></shadow></value>
+		</block>
+		<block type="OLED_rectangle">
+			<value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="Y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="width"><shadow type="math_number"><field name="NUM">70</field></shadow></value>
+			<value name="height"><shadow type="math_number"><field name="NUM">30</field></shadow></value>
+		</block>
+		<block type="OLED_round">
+			<value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="Y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="width"><shadow type="math_number"><field name="NUM">70</field></shadow></value>
+			<value name="height"><shadow type="math_number"><field name="NUM">30</field></shadow></value>
+			<value name="round"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+		</block>
+		<block type="OLED_triangle">
+			<value name="X"><shadow type="math_number"><field name="NUM">30</field></shadow></value>
+			<value name="Y"><shadow type="math_number"><field name="NUM">15</field></shadow></value>
+			<value name="width"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="height"><shadow type="math_number"><field name="NUM">60</field></shadow></value>
+			<value name="round"><shadow type="math_number"><field name="NUM">60</field></shadow></value>
+			<value name="angle"><shadow type="math_number"><field name="NUM">60</field></shadow></value>
+		</block>
+	</category>
+<!--
+<category name="CAT_del"  colour="#B655F5">
+	<block type="GFX_matrix_init"></block>
+	<block type="GFX_OLED_init"></block>
+	<block type="GFX_OLED_init2"></block>
+	<block type="GFX_display"></block>
+	<block type="GFX_clear"></block>
+	<block type="GFX_pixel">
+		<value name="X"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="Y"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+	</block>
+	<block type="GFX_line">
+	<value name="X1"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="Y1"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="X2"><shadow type="math_number"><field name="NUM">8</field></shadow></value>
+		<value name="Y2"><shadow type="math_number"><field name="NUM">5</field></shadow></value>
+	</block>
+	<block type="GFX_rectangle">
+	<value name="X1"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="Y1"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+		<value name="X2"><shadow type="math_number"><field name="NUM">7</field></shadow></value>
+		<value name="Y2"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
+	</block>
+	<block type="GFX_circle">
+		<value name="X"><shadow type="math_number"><field name="NUM">4</field></shadow></value>
+		<value name="Y"><shadow type="math_number"><field name="NUM">4</field></shadow></value>
+		<value name="R"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
+	</block>
+	<block type="GFX_bitmap">
+		<value name="x0"> <shadow type="math_number"> <field name="NUM">0</field></shadow></value>
+		<value name="y0"> <shadow type="math_number"><field name="NUM">0</field></shadow> </value>
+		<value name="width"> <shadow type="math_number"> <field name="NUM">8</field> </shadow> </value>
+		<value name="height"> <shadow type="math_number"> <field name="NUM">8</field></shadow> </value>
+	</block>
+</category>
+-->
+
+	<category name="CAT_TFT_ST7735" colour="#B655F5">
+			 <block type="st7735_init_esp32">
+				<field name="PIN_SCL">23</field>
+				<field name="PIN_SDA">25</field>
+			   	<field name="PIN_CS">26</field>
+				<field name="PIN_DC">27</field>
+				<field name="PIN_RST">32</field>
+			 </block>
+			 <block type="st7735_icon"></block>
+			<block type="st7735_backgroundcolor"></block>
+			<block type="st7735_rotatedisplay"></block>
+			<block type="st7735_invertdisplay"></block>
+			  <block type="st7735_setcursor">
+			  <value name="x0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			 <value name="y0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			  </block>
+			  <block type="st7735_settextcolor"></block>
+			  <block type="st7735_settextsize"></block>
+			  <block type="st7735_wraptext"></block>
+			  <block type="st7735_printTextln">
+			  <value name="text_to_print"><shadow type="text"><field name="TEXT">I am a Robot</field></shadow></value>
+			  </block>
+			<block type="st7735_drawpixel">
+			<value name="x0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="y0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+			<block type="st7735_drawline">
+			<value name="x0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="y0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="x1"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+			<value name="y1"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+			  </block>
+			<block type="st7735_drawrectangle">
+			<value name="x0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="y0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="width"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+			<value name="height"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+			  </block>
+			<block type="st7735_drawroundrectangle">
+			<value name="x0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="y0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="width"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+			<value name="height"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+			<value name="round"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
+			  </block>
+			<block type="st7735_drawcircle">
+					<value name="x0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+					<value name="y0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+					<value name="radius"><shadow type="math_number"><field name="NUM">50</field></shadow></value>
+			  </block>
+			 <block type="st7735_drawtriangle">
+					<value name="x0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+					<value name="y0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+					<value name="x1"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+					<value name="y1"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+					<value name="x2"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+					<value name="y2"><shadow type="math_number"><field name="NUM">100</field></shadow></value></block>
+			    <block type="st7735_drawicon">
+					<value name="x0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+					<value name="y0"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+					<value name="width"><shadow type="math_number"><field name="NUM">160</field></shadow></value>
+					<value name="height"><shadow type="math_number"><field name="NUM">128</field></shadow></value>
+			  </block>
+			   <block type="st7735_properties"></block>
+	</category>
+
+
+	<category name="CAT_LCDI2C" colour="#B655F5">
+				<block type="lcdi2c_setup" x="38" y="138"><field name="NAME">0x3F</field>
+                    <value name="COLUMNS"><shadow type="math_number"><field name="NUM">16</field></shadow></value>
+                    <value name="ROWS"><shadow type="math_number"><field name="NUM">2</field></shadow></value>
+                </block>
+				<block type="lcdi2c_setBacklight"></block>
+				<block type="lcdi2c_clear"></block>
+				<block type="lcdi2c_home"></block>
+				<block type="lcdi2c_display"></block>
+                <block type="lcdi2c_setcursor" x="38" y="113">
+                    <value name="column"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+                    <value name="row"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+					<value name="texttoprint"><shadow type="text"><field name="TEXT">I am a Robot</field></shadow></value>
+                </block>
+				 <block type="lcdi2c_setcursoralone" x="38" y="113">
+                    <value name="column"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+                    <value name="row"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+                </block>
+                <block type="lcdi2c_scrollDisplay"></block>
+				<block type="lcdi2c_showCursor"></block>
+				<block type="lcdi2c_blinkCursor"></block>
+	</category>
+</category>
+
+<category name="CAT_AUDIO" colour="#FF63BB">
+		<category name="CAT_BUZZER" colour="#FF63BB">
+			<block type="RTTTL_music">  <field name="PIN_BUZZER">19</field></block>
+			<block type="RTTTL_music_custom">
+			<field name="PIN_BUZZER">19</field>
+			<value name="rtttl_melody"><shadow type="text"><field name="TEXT">text</field></shadow></value>
+			</block>
+			<block type="play_esp32">
+			   <field name="PIN_BUZZER">19</field>
+		    </block>
+			<block type="tone_esp32">
+				<field name="PIN_BUZZER">19</field>
+				<value name="NUM"><shadow type="math_number"><field name="NUM">880</field></shadow></value>
+				<value name="TPS"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+			</block>
+			<block type="notone_esp32">
+				<field name="PIN_BUZZER">19</field>
+			</block>
+			<!--<block type="beep">
+			<value name="PIN"><shadow type="analog_pin"><field name="NUM">13</field></shadow></value></block>-->
+		</category>
+
+	<!--	<category name="CAT_DFPLAYER" colour="#FF63BB">
+			<block type="lp2i_mp3_init">
+				<field name="PIN_TX">4</field>
+				<field name="PIN_RX">5</field>
+				<value name="Volume"><shadow type="math_number"><field name="NUM">20</field></shadow></value>
+			</block>
+			<block type="lp2i_mp3_volume">
+			<value name="Volume"><shadow type="math_number"><field name="NUM">20</field></shadow></value>
+			</block>
+			<block type="lp2i_mp3_play"></block>
+			<block type="lp2i_mp3_play_track">
+				<value name="num"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
+			</block>
+			<block type="lp2i_mp3_pause"></block>
+			<block type="lp2i_mp3_next"></block>
+			<block type="lp2i_mp3_prev"></block>
+		</category>
+
+		<category name="CAT_OPENSMART" colour="#FF63BB">
+			<block type="OpenSmartMp3_init_ss">
+				<field name="PIN_TX">4</field>
+				<field name="PIN_RX">5</field>
+			</block>
+			<block type="OpenSmartMp3_set_volumen">
+			 <value name="Volumen"><shadow type="math_number"><field name="NUM">20</field></shadow></value>
+			</block>
+			<block type="OpenSmartMp3_operation"></block>
+			<block type="OpenSmartMp3_playsong">
+			 <value name="Song"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="OpenSmartMp3_playsongdirectiry">
+			 <value name="Song"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			 <value name="Directory"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="OpenSmartMp3_injectindex">
+			 <value name="Song"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+		</category> -->
+		
+		<category name="CAT_YX5300" colour="#FF63BB">
+			<block type="YX5300Mp3_init_esp32">
+			  <field name="PIN1">5</field>
+			  <field name="PIN2">4</field>
+			</block>
+			<block type="YX5300Mp3_set_equalizator"></block>
+			<block type="YX5300Mp3_set_volumen">
+				<value name="Volumen"><shadow type="math_number"><field name="NUM">20</field></shadow></value>
+			</block>
+			<!--<block type="YX5300Mp3_running"></block>-->
+			<block type="YX5300Mp3_operation"></block>
+			<block type="YX5300Mp3_playsong">
+				<value name="Song"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="YX5300Mp3_playsongdirectiry">
+				<value name="Song"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+				<value name="Directory"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="YX5300Mp3_playTrackRepeat">
+				<value name="Song"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="YX5300Mp3_playfolderrepeat">
+				<value name="Folder"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="YX5300Mp3_playFolderShuffle">
+				<value name="Folder"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+		</category>
+		
+		
+		<category name="CAT_RADIO_TEA5767" colour="#FF63BB">
+			<block type="RadioTEA5767_init"></block>
+		 	<block type="RadioTEA5767_activate"></block>
+			<block type="RadioTEA5767_mute"></block>
+			<block type="RadioTEA5767_LevelSignal"></block>
+			<block type="RadioTEA5767_Stereo"></block>
+			<block type="RadioTEA5767_setFrequency">
+			    <value name="Value"><shadow type="math_number"><field name="NUM">88.20</field></shadow></value>
+			</block>
+			<block type="frequenciesMadrid"></block>
+		 </category>
+
+	</category>
+
+    <category name="CAT_com"  colour="#0060aa">
+		<category name="CAT_ARDUINO_COMM_SERIAL" colour="#0060aa">
+		<!--<block type="serial_init2"></block>
+			<block type="serial_write"><value name="CONTENT">	<shadow type="text"><field name="TEXT">Hi Otto</field>	</shadow></value></block>
+			<block type="serial_available"></block><block type="serial_input"></block>
+			<block type="serial_read"></block>
+			<block type="serial_line"></block>
+			<block type="serial_tab"></block>-->
+			<block type="serial_init">
+			<value name="PIN_TX"><shadow type="math_number"><field name="NUM">12</field></shadow></value>
+			<value name="PIN_RX"><shadow type="math_number"><field name="NUM">11</field></shadow></value>
+			</block>
+			<block type="serial_available"></block>
+            <block type="serial_read"></block>
+			<block type="serial_read_string"></block>
+			<block type="serial_read_number"></block>
+			<block type="serial_printfor" x="13" y="38"><field name="TYPE">DEC</field>
+			<value name="CONTENT"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+			<block type="serial_print">
+			<value name="CONTENT"><shadow type="text"><field name="TEXT">text</field></shadow></value>
+			</block>
+            <block type="serial_println">
+			<value name="CONTENT"><shadow type="text"><field name="TEXT">text</field></shadow></value>
+			</block>
+            <block type="serial_write" x="38" y="38"><value name="CONTENT"><shadow type="text"><field name="TEXT">A</field></shadow></value>
+			</block>
+		</category>
+
+	<!--	<category name="CAT_ARDUINO_COMM_SOFTSERIAL" colour="#0060aa"> -->
+		<!--<block type="soft_init2"></block>
+			<block type="soft_write"><value name="CONTENT">	<shadow type="text"><field name="TEXT">Hi Otto</field>	</shadow></value></block>
+			<block type="soft_available"></block>
+			<block type="soft_read"></block>
+			<block type="serial_line"></block>
+			<block type="serial_tab"></block> -->
+		<!--	<block type="soft_init">
+				<field name="PIN_TX">4</field>
+				<field name="PIN_RX">5</field>
+			</block>
+			<block type="soft_available"></block>
+            <block type="soft_read"></block>
+			<block type="soft_read_string"></block>
+			<block type="soft_read_number"></block>
+			<block type="soft_printfor" x="13" y="38"><field name="TYPE">DEC</field>
+			<value name="CONTENT"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+			<block type="soft_print"><value name="CONTENT"><shadow type="text"><field name="TEXT">text</field></shadow></value>
+			</block>
+            <block type="soft_println"><value name="CONTENT"><shadow type="text"><field name="TEXT">text</field></shadow></value>
+			</block>
+			<block type="soft_write" x="38" y="38"><value name="CONTENT"><shadow type="text"><field name="TEXT">A</field></shadow></value>
+			</block>
+		</category> -->
+
+	    <category name="CAT_bluetooth" colour="#0060aa">
+			<!--<block type="soft_bt_init"><field name="PIN_TX">D2</field>
+			<field name="PIN_RX">D3</field>
+			</block> -->
+			<block type="esp32_bt_init"><value name="BT_NAME"><shadow type="text"><field name="TEXT">ESP32 MRTX NODE</field></shadow></value></block>
+			<block type="soft_bt_available"></block>
+            <block type="soft_bt_read"></block>
+			<block type="soft_bt_read_string"></block>
+			<block type="soft_bt_read_number"></block>
+			<block type="soft_bt_printfor" x="13" y="38"><field name="TYPE">DEC</field><value name="CONTENT"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+			<block type="soft_bt_print"><value name="CONTENT"><shadow type="text"><field name="TEXT">text</field></shadow></value></block>
+            <block type="soft_bt_println"><value name="CONTENT"><shadow type="text"><field name="TEXT">text</field></shadow></value></block>
+			<block type="soft_bt_write" x="38" y="38"><value name="CONTENT"><shadow type="text"><field name="TEXT">A</field></shadow></value></block>
+		<!--<block type="bluetooth_init"><value name="PIN1"><shadow type="math_number">	<field name="Num">11</field></shadow></value><value name="PIN2"><shadow type="math_number"><field name="Num">12</field></shadow>	</value></block>
+			<block type="bluetooth_a"></block>
+			<block type="bluetooth_b"></block>-->
+		</category>
+
+		<category name="CAT_RemoteIR" colour="#0060aa">
+			 <block type="Init_generalremotecontrol">
+				<field name="PIN_IR">33</field></block>
+			 <block type="IR_Remote_Key"></block>
+
+			<!-- <block type="Init_remotecontrolMRTNode">
+				<field name="PIN_IR">33</field></block>
+			 <block type="IR_RemoteMRT_Key_Node"></block>	-->
+
+
+		    <block type="Init_remotecontrolMRTNodeIL">
+				<field name="PIN_IR">33</field></block>
+			<block type="Attend_remotecontrolMRTNodeIL"></block>
+			<block type="IR_RemoteMRT_Key_NodeIL"></block>
+
+
+
+
+		</category>
+	</category>
+
+	<category name="CAT_iot" colour="#26C6F8">
+		<category name="CAT_wifi" colour="#26C6F8">
+		<block type="wifi_init_sta"></block>
+		<block type="wifi_sta_staticip"></block>
+		<block type="wifi_init_ap"></block>
+		<block type="wifi_ap_staticip"></block>
+		<block type="wifi_init_sta_ap"></block>
+
+		<!--	<block type="esp8266_init"></block>
+			<block type="esp8266_send"></block>
+			<block type="esp8266_html"></block>
+			<block type="esp8266_start"></block>
+			<block type="esp8266_request_find"></block> -->
+		</category>
+
+		<category name="CAT_WIFISERVER" colour="#26C6F8">
+			<block type="wifiserver_port">
+				<value name="server_port"><shadow type="math_number"><field name="NUM">80</field></shadow></value>
+			</block>
+			<block type="wifiserver_waitconnection"></block>
+
+			<block type="wifiserver_ip"></block>
+			<block type="wifiserver_request"></block>
+
+			<block type="wifiserver_answer">
+				<value name="server_answer"><shadow type="text"><field name="TEXT">Welcome :-)</field></shadow></value>
+			</block>
+			<block type="wifiserver_stop"></block>
+			<block type="wifiserver_flush"></block>
+
+			<block type="wifiserver_port_asyn_library">
+				<value name="server_port"><shadow type="math_number"><field name="NUM">80</field></shadow></value>
+			</block>
+			<block type="esp8266_asynsend"></block>
+			<block type="esp8266_asynsend_text">
+				<value name="server_answer"><shadow type="text"><field name="TEXT">Welcome :-)</field></shadow></value>
+			</block>
+
+			<block type="esp8266_asyngetArg"></block>
+			<block type="esp8266_asynuseArg"></block>
+
+		<!--	<block type="wifiserver_port_library">
+				<value name="server_port"><shadow type="math_number"><field name="NUM">80</field></shadow></value>
+			</block>
+			<block type="esp8266_handle_request"></block>
+			<block type="esp8266_send"></block>
+			<block type="esp8266_getArg"></block>
+			<block type="esp8266_useArg"></block> -->
+
+		</category>
+
+		<category name="CAT_ESPNOW" colour="#26C6F8">
+
+			<block type="espnow_init_esp32">
+					<value name="id_node"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="espnow_reception_function"></block>
+			<block type="espnow_sendmessage_all"></block>
+			<block type="espnow_sendmessage_mac"></block>
+			<block type="espnow_paramInt_fill"></block>
+			<block type="espnow_paramFloat_fill"></block>
+			<block type="espnow_paramText_fill"></block>
+			<block type="espnow_paramNode_refund"></block>
+			<block type="espnow_paramInt_refund"></block>
+			<block type="espnow_paramFloat_refund"></block>
+			<block type="espnow_paramText_refund"></block>
+
+		</category>
+
+		<category name="CAT_MQTT" colour="#26C6F8">
+			<block type="mqtt_init"></block>
+			<block type="mqtt_loop"></block>
+			<block type="mqtt_subscribe_num"></block>
+			<block type="mqtt_subscribe_text"></block>
+			<block type="mqtt_publish"></block>
+		</category>
+
+		<category name="CAT_IFTTT" colour="#26C6F8">
+			<block type="ifttt_init"></block>
+			<block type="ifttt_send">
+				<value name="evento"><shadow type="text"><field name="TEXT">Event name </field></shadow></value>
+				<value name="value1"><shadow type="text"><field name="TEXT">Value1 or empty</field></shadow></value>
+				<value name="value2"><shadow type="text"><field name="TEXT">Value2 or empty</field></shadow></value>
+				<value name="value3"><shadow type="text"><field name="TEXT">Value3 or empty</field></shadow></value>
+			</block>
+		</category>
+
+		<category name="CAT_NTP" colour="#26C6F8">
+			<block type="Init_NTP"></block>
+			<block type="order_read_NTP_server"></block>
+			<block type="values_NTP_server"></block>
+			<block type="values_text_NTP_server"></block>
+		</category>
+
+		<category name="CAT_OPENWEATHER" colour="#26C6F8">
+			<block type="Init_OpenWeather"></block>
+			<block type="order_read_OpenWeather_server">
+				<value name="city"><shadow type="text"><field name="TEXT">Madrid</field></shadow></value>
+				<value name="countrycode"><shadow type="text"><field name="TEXT">ES</field></shadow></value>
+			</block>
+			<block type="values_OpenWeather_server"></block>
+			<block type="values_text_OpenWeather_server"></block>
+		</category>
+
+		<category name="CAT_THINGSPEAK" colour="#26C6F8">
+			<block type="thingspeak_init"></block>
+			<block type="thingspeak_write">
+				<value name="variable"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="thingspeak_write_long"></block>
+			<block type="thingspeak_write_float"></block>
+
+		</category>
+
+		<category name="CAT_FIREBASE" colour="#26C6F8">
+			<block type="firebase_init"></block>
+			<block type="firebase_start"></block>
+			<block type="firebase_write_num">
+				<value name="node"><shadow type="text"><field name="TEXT">/Path/name</field></shadow></value>
+				<value name="value"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+			</block>
+			<block type="firebase_write_text">
+				<value name="node"><shadow type="text"><field name="TEXT">/Path/name</field></shadow></value>
+				<value name="value"><shadow type="text"><field name="TEXT">Texto</field></shadow></value>
+			</block>
+			<block type="firebase_read_num">
+				<value name="node"><shadow type="text"><field name="TEXT">/Path/name</field></shadow></value>
+			</block>
+			<block type="firebase_read_text">
+				<value name="node"><shadow type="text"><field name="TEXT">/Path/name</field></shadow></value>
+			</block>
+			<block type="firebase_delete_node">
+				<value name="node"><shadow type="text"><field name="TEXT">/Path/name</field></shadow></value>
+			</block>
+
+		</category>
+
+		<category name="CAT_TELEGRAM" colour="#26C6F8">
+			<block type="telegram_init"></block>
+			<block type="telegram_loop_message"></block>
+			<block type="telegram_reception_function"></block>
+			<block type="telegram_sendmessage">
+				<value name="texttosend"><shadow type="text"><field name="TEXT">Hello</field></shadow></value>
+			</block>
+			<block type="telegram_message_received"></block>
+			<block type="telegram_message_name_received"></block>
+		</category>
+
+		<category name="CAT_ALEXA" colour="#26C6F8">
+
+			<block type="Alexa_init_esp"> </block>
+			<block type="Alexa_reception_function"></block>
+			<block type="Alexa_loop"></block>
+			<block type="Alexa_param"></block>
+
+		</category>
+
+		<category name="CAT_html" colour="#26C6F8">
+
+			<block type="esp8266_html"></block>
+			<block type="emptytext"></block>
+			<block type="esp_dig_pin"></block>
+			<block type="textmod"></block>
+			<block type="link"></block>
+			<block type="emptyVar"></block>
+			<block type="br"></block>
+			<block type="header"></block>
+			<block type="paragraph"></block>
+			<block type="image"></block>
+			<block type="table"></block>
+			<block type="tablerow"></block>
+			<block type="tableheading"></block>
+			<block type="tabledata"></block>
+			<block type="form"></block>
+			<block type="input"></block>
+			<block type="label"></block>
+			<block type="args"></block>
+			<block type="textalign"></block>
+			<block type="color"></block>
+			<block type="bgcolor"></block>
+			<block type="border"></block>
+		</category>
+
+	</category>
+
+
+	<category name="CAT_MUVISION" colour="#0060aa">
+			<block type="Vs2MuInit"></block>
+			<block type="Vs2Setup"></block>
+			<block type="Vs2Reset"></block>
+			<block type="Vs2SetLEDColor">
+			  <value name="LEDLevel"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+			</block>
+		    <block type="Vs2VisionBegin"></block>
+			<block type="Vs2SetVisionLevel"></block>
+			<block type="Vs2SetColorRecognitionRegion">
+				<value name="Width"><shadow type="math_number"><field name="NUM">5</field></shadow></value>
+				<value name="Height"><shadow type="math_number"><field name="NUM">5</field></shadow></value>
+			</block>
+			<block type="Vs2SetColorBlockMinBlob">
+				<value name="Width"><shadow type="math_number"><field name="NUM">5</field></shadow></value>
+				<value name="Height"><shadow type="math_number"><field name="NUM">5</field></shadow></value>
+			</block>
+		    <block type="Vs2SetVisionZoom"></block>
+			<!--<block type="Vs2SetUARTBaud"></block> -->
+			<block type="Vs2SetCameraWhiteBalance"></block>
+			<block type="Vs2SetCameraHFR"></block>
+			<block type="Vs2Detected"></block>
+			<block type="Vs2DetectedRegionColor">
+				<value name="XValue"><shadow type="math_number"><field name="NUM">50</field></shadow></value>
+				<value name="YValue"><shadow type="math_number"><field name="NUM">50</field></shadow></value>
+			</block>
+			<block type="Vs2DetectedColorDetect"></block>
+			<block type="Vs2GetMessage"></block>
+			<block type="Vs2GetCardType"></block>
+			<block type="Vs2GetColorLabel"></block>
+			<block type="Mu3LsBegin"></block>
+			<block type="Mu3LsSetSensitivity"></block>
+			<!-- <block type="Mu3LsWhiteBalanceEnable"></block> -->
+			<block type="Mu3LsReadProximity"></block>
+			<block type="Mu3LsReadAmbientLight"></block>
+			<block type="Mu3LsDetectedGesture"></block>
+			<block type="Mu3LsDetectedGestureType"></block>
+			<block type="Mu3AtWiFiInit">
+				<value name="BAUD"><shadow type="math_number"><field name="NUM">9600</field></shadow></value>
+			</block>
+			<block type="Mu3AtWiFiSet"><value name="SSID"><shadow type="text"></shadow></value>
+	        <value name="PASSWORD"><shadow type="text"></shadow></value>
+			</block>
+			<block type="Mu3AtWiFiCon"></block>
+			<block type="Mu3AtWiFiDiscon"></block>
+			<block type="Mu3AtWiFiCip"></block>
+			<block type="Mu3AtWiFiSip"></block>
+			<block type="Mu3AtWiFiRead"></block>
+			<block type="Mu3AtWiFiUDP">
+				<value name="IP"><shadow type="text"><field name="TEXT">192.168.4.2</field></shadow></value>
+	        <value name="PORT"><shadow type="text"><field name="TEXT">3333</field></shadow></value>
+			</block>
+			<block type="Mu3AtWiFiWrite"><value name="NUMBER"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+		</category>
+
+
+	<category name="CAT_STOCKAGE" colour="#154360">
+			<block type="eeprom_read">
+			<value name="adr"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+			<block type="eeprom_write">
+			<value name="val"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			<value name="adr"><shadow type="math_number"><field name="NUM">0</field></shadow></value>
+			</block>
+		</category>
+
+</toolbox>
