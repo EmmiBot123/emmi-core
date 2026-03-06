@@ -6,7 +6,7 @@
 import { Modal } from './modal.js';
 
 export const CompilerBridge = (() => {
-    const SERVER_URL = 'http://localhost:3456';
+    const SERVER_URL = 'http://127.0.0.1:3456';
     let serverOnline = false;
 
     const BOARD_FQBN_MAP = {
@@ -30,9 +30,17 @@ export const CompilerBridge = (() => {
 
     async function checkServer() {
         try {
-            const r = await fetch(SERVER_URL + '/health', { signal: AbortSignal.timeout(3000) });
+            const r = await fetch(SERVER_URL + '/health', { signal: AbortSignal.timeout(2000) });
             serverOnline = r.ok;
-        } catch { serverOnline = false; }
+        } catch {
+            // Fallback: some bridge versions might only have /ports
+            try {
+                const r2 = await fetch(SERVER_URL + '/ports', { signal: AbortSignal.timeout(2000) });
+                serverOnline = r2.ok;
+            } catch {
+                serverOnline = false;
+            }
+        }
         updateStatus(serverOnline);
         return serverOnline;
     }

@@ -135,7 +135,7 @@ export const SerialBridge = (() => {
 
         let bridgePorts = [];
         try {
-            const response = await fetch('http://localhost:3456/ports', { signal: AbortSignal.timeout(2000) });
+            const response = await fetch('http://127.0.0.1:3456/ports', { signal: AbortSignal.timeout(2000) });
             if (response.ok) {
                 const data = await response.json();
                 bridgePorts = data.map(p => ({
