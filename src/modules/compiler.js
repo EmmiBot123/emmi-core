@@ -8,7 +8,6 @@ import { Modal } from './modal.js';
 export const CompilerBridge = (() => {
     const SERVER_URL = 'http://127.0.0.1:3456';
     let serverOnline = false;
-    let isBlocked = false;
 
     const BOARD_FQBN_MAP = {
         'uno': 'arduino:avr:uno', 'nano': 'arduino:avr:nano:cpu=atmega328old',
@@ -30,34 +29,16 @@ export const CompilerBridge = (() => {
     }
 
     async function checkServer() {
-        console.log('[EMMI] Checking bridge at ' + SERVER_URL);
-        isBlocked = false;
         try {
             const r = await fetch(SERVER_URL + '/health', { signal: AbortSignal.timeout(2000) });
             serverOnline = r.ok;
-            if (serverOnline) console.log('[EMMI] Bridge online via /health');
         } catch (e) {
-            console.warn('[EMMI] /health failed:', e.message);
-
-            // Diagnose: If it's a TypeError and we are on HTTPS, it's likely a Mixed Content/CORS block
-            if (e.name === 'TypeError' && window.location.protocol === 'https:') {
-                isBlocked = true;
-            }
-
             // Fallback: some bridge versions might only have /ports
             try {
                 const r2 = await fetch(SERVER_URL + '/ports', { signal: AbortSignal.timeout(2000) });
                 serverOnline = r2.ok;
-                if (serverOnline) {
-                    console.log('[EMMI] Bridge online via /ports');
-                    isBlocked = false;
-                }
             } catch (e2) {
-                console.warn('[EMMI] /ports failed:', e2.message);
                 serverOnline = false;
-                if (e2.name === 'TypeError' && window.location.protocol === 'https:') {
-                    isBlocked = true;
-                }
             }
         }
         updateStatus(serverOnline);
@@ -67,19 +48,10 @@ export const CompilerBridge = (() => {
     function updateStatus(online) {
         const el = document.getElementById('server-status');
         if (el) {
-            if (isBlocked && !online) {
-                el.innerHTML = '⬤ Blocked <i class="fa fa-question-circle" style="cursor:help" title="Click for help unblocking local bridge"></i>';
-                el.className = 'server-status offline blocked';
-                el.style.color = '#f39c12';
-                el.onclick = () => Modal.show('bridgeHelpModal');
-            } else {
-                const onlineText = (window.MSG && window.MSG.server_online) ? window.MSG.server_online : '⬤ Online';
-                const offlineText = (window.MSG && window.MSG.server_offline) ? window.MSG.server_offline : '⬤ Offline';
-                el.innerHTML = online ? onlineText : offlineText;
-                el.className = 'server-status ' + (online ? 'online' : 'offline');
-                el.style.color = '';
-                el.onclick = null;
-            }
+            const onlineText = (window.MSG && window.MSG.server_online) ? window.MSG.server_online : '⬤ Online';
+            const offlineText = (window.MSG && window.MSG.server_offline) ? window.MSG.server_offline : '⬤ Offline';
+            el.innerHTML = online ? onlineText : offlineText;
+            el.className = 'server-status ' + (online ? 'online' : 'offline');
         }
     }
 
