@@ -124,7 +124,7 @@ export const App = {
 
     /* ── Toolbox Loading (ASYNC) ────── */
     async loadToolboxDefinition(toolboxFile) {
-        const url = `/toolbox/${toolboxFile}.xml`;
+        const url = `./toolbox/${toolboxFile}.xml`;
         try {
             const response = await fetch(url);
             if (!response.ok) { this.removeToolbox(); return; }
@@ -662,7 +662,7 @@ export const App = {
     /* ── Examples ────────────────── */
     async buildExamples() {
         try {
-            const res = await fetch('/examples/examples.json');
+            const res = await fetch('./examples/examples.json');
             const data = await res.json();
             const tbody = $('#includedContent');
             tbody.innerHTML = '';

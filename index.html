@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <link rel="icon" type="image/ico" href="/media/app.ico" />
+  <link rel="icon" type="image/ico" href="./media/app.ico" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="EMMI BOT - Web-based Arduino Blockly IDE with AI assistant" />
@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <!-- Vendor: Blockly + Generators (must load before blocks) -->
-  <script src="/vendor/blockly.min.js"></script>
-  <script src="/vendor/blocks.min.js"></script>
-  <script src="/vendor/blockly_msg_en.js"></script>
+  <script src="./vendor/blockly.min.js"></script>
+  <script src="./vendor/blocks.min.js"></script>
+  <script src="./vendor/blockly_msg_en.js"></script>
   <script>
     window.goog = window.goog || {
       provide: function (n) {
@@ -29,86 +29,86 @@
       isString: function (val) { return typeof val === 'string'; }
     };
   </script>
-  <script src="/vendor/type.js"></script>
-  <script src="/vendor/types.js"></script>
-  <script src="/vendor/typings.js"></script>
-  <script src="/vendor/generate_python.js"></script>
-  <script src="/vendor/generate_java.js"></script>
-  <script src="/vendor/generate_cpp.js"></script>
-  <script src="/vendor/prettify.min.js"></script>
+  <script src="./vendor/type.js"></script>
+  <script src="./vendor/types.js"></script>
+  <script src="./vendor/typings.js"></script>
+  <script src="./vendor/generate_python.js"></script>
+  <script src="./vendor/generate_java.js"></script>
+  <script src="./vendor/generate_cpp.js"></script>
+  <script src="./vendor/prettify.min.js"></script>
 
   <!-- Board profiles (must load before blocks) -->
-  <script src="/vendor/boards.js"></script>
+  <script src="./vendor/boards.js"></script>
 
   <!-- Vendor: ACE Editor -->
-  <script src="/vendor/ace.js"></script>
-  <script src="/vendor/ext-language_tools.js"></script>
+  <script src="./vendor/ace.js"></script>
+  <script src="./vendor/ext-language_tools.js"></script>
 
   <!-- Block definitions & generators (loaded from public) -->
-  <script src="/blocs/blockly_blocs.js"></script>
-  <script src="/blocs/arduino_blocs.js"></script>
-  <script src="/blocs/arduino_generateurs_cpp.js"></script>
-  <script src="/blocs/arduino_generateurs_python.js"></script>
-  <script src="/blocs/blockly_generateurs_cpp.js"></script>
-  <script src="/blocs/blockly_generateurs_python.js"></script>
-  <script src="/blocs/blockly_generateurs_java.js"></script>
-  <script src="/blocs/audio.js"></script>
-  <script src="/blocs/analogkey.js"></script>
-  <script src="/blocs/leds.js"></script>
-  <script src="/blocs/RTTTL.js"></script>
-  <script src="/blocs/sensors.js"></script>
-  <script src="/blocs/softBT.js"></script>
-  <script src="/blocs/SerialUSB.js"></script>
-  <script src="/blocs/SoftwareSerial.js"></script>
-  <script src="/blocs/OpenSmartMP3.js"></script>
-  <script src="/blocs/MP3YX5300.js"></script>
-  <script src="/blocs/ST7735.js"></script>
-  <script src="/blocs/matrix.js"></script>
-  <script src="/blocs/MAX7219.js"></script>
-  <script src="/blocs/TCS34725.js"></script>
-  <script src="/blocs/HMC5883.js"></script>
-  <script src="/blocs/RFID.js"></script>
-  <script src="/blocs/gyro.js"></script>
-  <script src="/blocs/GPS.js"></script>
-  <script src="/blocs/ESPFunctions.js"></script>
-  <script src="/blocs/DisplayTM1637.js"></script>
-  <script src="/blocs/RadioTEA5767.js"></script>
-  <script src="/blocs/Lcd_I2C.js"></script>
-  <script src="/blocs/Keyboard_and_mouse.js"></script>
-  <script src="/blocs/APDS9960.js"></script>
-  <script src="/blocs/mu_vision_sensor.js"></script>
-  <script src="/blocs/remoteControl.js"></script>
-  <script src="/blocs/RTC_DS3231.js"></script>
-  <script src="/blocs/InternalRTC.js"></script>
-  <script src="/blocs/html.js"></script>
-  <script src="/blocs/otto.js"></script>
-  <script src="/blocs/ottoesp.js"></script>
-  <script src="/blocs/oled.js"></script>
-  <script src="/blocs/encoder.js"></script>
-  <script src="/blocs/motor.js"></script>
-  <script src="/blocs/escornabot.js"></script>
-  <script src="/blocs/neopixel.js"></script>
-  <script src="/blocs/MQTT.js"></script>
-  <script src="/blocs/Thingspeak.js"></script>
-  <script src="/blocs/Firebase.js"></script>
-  <script src="/blocs/Telegram.js"></script>
-  <script src="/blocs/OpenWeather.js"></script>
-  <script src="/blocs/IFTTT.js"></script>
-  <script src="/blocs/NTP.js"></script>
-  <script src="/blocs/WifiBasic.js"></script>
-  <script src="/blocs/WifiServer.js"></script>
-  <script src="/blocs/EspNow.js"></script>
-  <script src="/blocs/Alexa.js"></script>
-  <script src="/blocs/text.js"></script>
-  <script src="/vendor/typing.js"></script>
-  <script src="/vendor/hexlify.js"></script>
-  <script src="/vendor/intel-hex.browser.js"></script>
+  <script src="./blocs/blockly_blocs.js"></script>
+  <script src="./blocs/arduino_blocs.js"></script>
+  <script src="./blocs/arduino_generateurs_cpp.js"></script>
+  <script src="./blocs/arduino_generateurs_python.js"></script>
+  <script src="./blocs/blockly_generateurs_cpp.js"></script>
+  <script src="./blocs/blockly_generateurs_python.js"></script>
+  <script src="./blocs/blockly_generateurs_java.js"></script>
+  <script src="./blocs/audio.js"></script>
+  <script src="./blocs/analogkey.js"></script>
+  <script src="./blocs/leds.js"></script>
+  <script src="./blocs/RTTTL.js"></script>
+  <script src="./blocs/sensors.js"></script>
+  <script src="./blocs/softBT.js"></script>
+  <script src="./blocs/SerialUSB.js"></script>
+  <script src="./blocs/SoftwareSerial.js"></script>
+  <script src="./blocs/OpenSmartMP3.js"></script>
+  <script src="./blocs/MP3YX5300.js"></script>
+  <script src="./blocs/ST7735.js"></script>
+  <script src="./blocs/matrix.js"></script>
+  <script src="./blocs/MAX7219.js"></script>
+  <script src="./blocs/TCS34725.js"></script>
+  <script src="./blocs/HMC5883.js"></script>
+  <script src="./blocs/RFID.js"></script>
+  <script src="./blocs/gyro.js"></script>
+  <script src="./blocs/GPS.js"></script>
+  <script src="./blocs/ESPFunctions.js"></script>
+  <script src="./blocs/DisplayTM1637.js"></script>
+  <script src="./blocs/RadioTEA5767.js"></script>
+  <script src="./blocs/Lcd_I2C.js"></script>
+  <script src="./blocs/Keyboard_and_mouse.js"></script>
+  <script src="./blocs/APDS9960.js"></script>
+  <script src="./blocs/mu_vision_sensor.js"></script>
+  <script src="./blocs/remoteControl.js"></script>
+  <script src="./blocs/RTC_DS3231.js"></script>
+  <script src="./blocs/InternalRTC.js"></script>
+  <script src="./blocs/html.js"></script>
+  <script src="./blocs/otto.js"></script>
+  <script src="./blocs/ottoesp.js"></script>
+  <script src="./blocs/oled.js"></script>
+  <script src="./blocs/encoder.js"></script>
+  <script src="./blocs/motor.js"></script>
+  <script src="./blocs/escornabot.js"></script>
+  <script src="./blocs/neopixel.js"></script>
+  <script src="./blocs/MQTT.js"></script>
+  <script src="./blocs/Thingspeak.js"></script>
+  <script src="./blocs/Firebase.js"></script>
+  <script src="./blocs/Telegram.js"></script>
+  <script src="./blocs/OpenWeather.js"></script>
+  <script src="./blocs/IFTTT.js"></script>
+  <script src="./blocs/NTP.js"></script>
+  <script src="./blocs/WifiBasic.js"></script>
+  <script src="./blocs/WifiServer.js"></script>
+  <script src="./blocs/EspNow.js"></script>
+  <script src="./blocs/Alexa.js"></script>
+  <script src="./blocs/text.js"></script>
+  <script src="./vendor/typing.js"></script>
+  <script src="./vendor/hexlify.js"></script>
+  <script src="./vendor/intel-hex.browser.js"></script>
 
   <!-- Language -->
-  <script src="/lang/code.js"></script>
+  <script src="./lang/code.js"></script>
 
   <!-- App CSS -->
-  <link rel="stylesheet" href="/src/styles/main.css" />
+  <link rel="stylesheet" href="./src/styles/main.css" />
 </head>
 
 <body>
@@ -117,7 +117,7 @@
     <div id="title">
       <div class="img">
         <a href="https://eurekaminds.in/" target="_blank">
-          <img src="/media/icon.png" alt="Logo" />
+          <img src="./media/icon.png" alt="Logo" />
         </a>
       </div>
     </div>
@@ -227,7 +227,7 @@
       <button id="btn_search" class="btn btn-tool" title="Search" style="display:none;">
         <span class="fa fa-binoculars"></span>
       </button>
-      <a href="/EMMI_Bridge_Installer.exe" download="EMMI_Bridge_Installer.exe" id="btn_download_bridge" class="btn btn-download" title="Download EMMI Bridge Installer">
+      <a href="./EMMI_Bridge_Installer.exe" download="EMMI_Bridge_Installer.exe" id="btn_download_bridge" class="btn btn-download" title="Download EMMI Bridge Installer">
         <span class="fa fa-download"></span>
       </a>
       <button id="btn_ai_chat" class="btn btn-ai" title="AI Assistant">
@@ -466,7 +466,7 @@
   </div>
 
   <!-- App module entry point -->
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

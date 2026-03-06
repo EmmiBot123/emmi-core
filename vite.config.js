@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/emmi-core/',
+  base: './',
   root: '.',
   publicDir: 'public',
   server: {
