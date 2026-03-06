@@ -111,6 +111,12 @@ body {
   color: var(--error);
 }
 
+.server-status.blocked {
+  color: #f39c12;
+  cursor: pointer;
+  text-decoration: underline dotted;
+}
+
 /* ============================================
    TOOLBAR / HEADER
    ============================================ */

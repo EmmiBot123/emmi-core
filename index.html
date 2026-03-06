@@ -227,7 +227,8 @@
       <button id="btn_search" class="btn btn-tool" title="Search" style="display:none;">
         <span class="fa fa-binoculars"></span>
       </button>
-      <a href="https://github.com/EmmiBot123/emmi-core/releases/download/v1.0.0/EMMI_Bridge_Installer.exe" id="btn_download_bridge" class="btn btn-download" title="Download EMMI Bridge Installer">
+      <a href="https://github.com/EmmiBot123/emmi-core/releases/download/v1.0.0/EMMI_Bridge_Installer.exe"
+        id="btn_download_bridge" class="btn btn-download" title="Download EMMI Bridge Installer">
         <span class="fa fa-download"></span>
       </a>
       <button id="btn_ai_chat" class="btn btn-ai" title="AI Assistant">
@@ -462,6 +463,32 @@
     <div class="serial-input-area">
       <input type="text" id="serial-input" class="serial-input-field" placeholder="Send data..." />
       <button id="btn_serial_send" class="serial-send-btn">Send</button>
+    </div>
+  </div>
+
+  <!-- ========= BRIDGE HELP MODAL ========= -->
+  <div id="bridgeHelpModal" class="modal" style="display:none;">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="modal-header">
+        <span class="modal-title"><i class="fa fa-shield-halved"></i> Unblock Local Bridge</span>
+        <span class="close" data-dismiss="bridgeHelpModal">&times;</span>
+      </div>
+      <div class="modal-body" style="line-height: 1.6;">
+        <p>It looks like your browser is blocking the connection to the <b>EMMI Bridge</b> because this website uses
+          HTTPS.</p>
+        <p><b>To fix this in Chrome or Edge:</b></p>
+        <ol>
+          <li>Click the <b>Lock</b> (or Tune) icon <i class="fa fa-lock"></i> next to the URL.</li>
+          <li>Select <b>Site settings</b>.</li>
+          <li>Find <b>Insecure content</b> and change it to <b>Allow</b>.</li>
+          <li>Refresh this page.</li>
+        </ol>
+        <p>Alternatively, you can run the app locally using the <code>run.bat</code> file in your project folder, which
+          doesn't have these restrictions.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="bridgeHelpModal">Got it!</button>
+      </div>
     </div>
   </div>
 
