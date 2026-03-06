@@ -134,16 +134,40 @@ export const SerialBridge = (() => {
         if (!select) return;
 
         let bridgePorts = [];
+        const SERVER_URL = 'http://127.0.0.1:3456';
+        const ALT_URL = 'http://localhost:3456';
+
         try {
-            const response = await fetch('http://127.0.0.1:3456/ports', { signal: AbortSignal.timeout(2000) });
+            console.log('[EMMI] Serial: Checking bridge at ' + SERVER_URL + '/ports');
+            const response = await fetch(SERVER_URL + '/ports', { signal: AbortSignal.timeout(2000) });
             if (response.ok) {
                 const data = await response.json();
                 bridgePorts = data.map(p => ({
                     name: p.address,
                     desc: p.protocol_label || 'Serial Port'
                 }));
+                console.log('[EMMI] Serial: Bridge ports loaded via 127.0.0.1');
             }
-        } catch (e) { /* ignore bridge errors */ }
+        } catch (e) {
+            console.warn('[EMMI] Serial: 127.0.0.1/ports failed:', e.name, e.message);
+
+            // Try localhost fallback
+            try {
+                console.log('[EMMI] Serial: Trying fallback to ' + ALT_URL + '/ports');
+                const responseAlt = await fetch(ALT_URL + '/ports', { signal: AbortSignal.timeout(2000) });
+                if (responseAlt.ok) {
+                    const data = await responseAlt.json();
+                    bridgePorts = data.map(p => ({
+                        name: p.address,
+                        desc: p.protocol_label || 'Serial Port'
+                    }));
+                    console.log('[EMMI] Serial: Bridge ports loaded via localhost');
+                }
+            } catch (eAlt) {
+                console.warn('[EMMI] Serial: localhost/ports failed:', eAlt.name, eAlt.message);
+                // ignore bridge errors, will fallback to webPorts
+            }
+        }
 
         let webPorts = [];
         if (isSupported()) {
