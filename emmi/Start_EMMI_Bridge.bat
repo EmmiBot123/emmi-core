@@ -6,10 +6,10 @@ echo ==============================================
 echo.
 
 :: Start the original bridge executable silently
-start /b emmi-bridge.exe
+start /b "" "emmi bridge\dist\emmi-bridge.exe"
 
 :: Start the new proxy executable silently
-start /b emmi_proxy.exe
+start /b "" "emmi_proxy.exe"
 
 echo Both services are successfully running in the background!
 echo You can safely close this window. Your EMMI BOT IDE on GitHub is now ONLINE.

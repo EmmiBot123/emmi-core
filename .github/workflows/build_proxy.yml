@@ -32,21 +32,21 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        mkdir EMMI_Bridge_Proxy_Pack
-        # Download the original bridge executable from the current release
-        gh release download v1.0.0 -p "EMMI_Bridge_Installer.exe" -D EMMI_Bridge_Proxy_Pack
-
-        # The downloaded file is named EMMI_Bridge_Installer.exe, rename it to emmi-bridge.exe to match the batch script
-        Rename-Item -Path "EMMI_Bridge_Proxy_Pack\EMMI_Bridge_Installer.exe" -NewName "emmi-bridge.exe"
+        mkdir EMMI_Bridge_Pack
+        # Download the original 400MB installer/extractor
+        gh release download v1.0.0 -p "EMMI_Bridge_Installer.exe" -D temp_download
+        
+        # Extract the contents (compilation folder, emmi bridge folder) using 7z
+        7z x "temp_download\EMMI_Bridge_Installer.exe" -oEMMI_Bridge_Pack\
         
         # Copy the newly built proxy executable
-        copy "emmi\dist\emmi_proxy.exe" EMMI_Bridge_Proxy_Pack\
+        copy "emmi\dist\emmi_proxy.exe" EMMI_Bridge_Pack\
         
         # Copy the startup batch file
-        copy "emmi\Start_EMMI_Bridge.bat" EMMI_Bridge_Proxy_Pack\
+        copy "emmi\Start_EMMI_Bridge.bat" EMMI_Bridge_Pack\
         
-        # Zip them together
-        Compress-Archive -Path "EMMI_Bridge_Proxy_Pack\*" -DestinationPath "EMMI_Bridge_with_Proxy.zip"
+        # Zip the entire folder for a ready-to-run experience
+        Compress-Archive -Path "EMMI_Bridge_Pack\*" -DestinationPath "EMMI_Bridge_with_Proxy.zip"
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
