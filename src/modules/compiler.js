@@ -29,37 +29,28 @@ export const CompilerBridge = (() => {
     }
 
     async function checkServer() {
-        try {
-            console.log('[EMMI] Checking bridge at ' + SERVER_URL + '/health');
-            const r = await fetch(SERVER_URL + '/health', { signal: AbortSignal.timeout(2000) });
-            serverOnline = r.ok;
-            if (serverOnline) console.log('[EMMI] Bridge online via 127.0.0.1/health');
-        } catch (e) {
-            console.warn('[EMMI] 127.0.0.1/health failed:', e.name, e.message);
-
-            // Try localhost fallback in case bridge is bound to names
+        // Try /health first, then /ports as fallback — both go through the proxy on 3457
+        const endpoints = ['/health', '/ports'];
+        for (const endpoint of endpoints) {
             try {
-                const ALT_URL = 'http://localhost:3456';
-                console.log('[EMMI] Trying fallback to ' + ALT_URL + '/health');
-                const rAlt = await fetch(ALT_URL + '/health', { signal: AbortSignal.timeout(2000) });
-                serverOnline = rAlt.ok;
-                if (serverOnline) console.log('[EMMI] Bridge online via localhost/health');
-            } catch (eAlt) {
-                console.warn('[EMMI] localhost/health failed:', eAlt.name, eAlt.message);
-
-                // Final fallback: try /ports on 127.0.0.1
-                try {
-                    const r2 = await fetch(SERVER_URL + '/ports', { signal: AbortSignal.timeout(2000) });
-                    serverOnline = r2.ok;
-                    if (serverOnline) console.log('[EMMI] Bridge online via 127.0.0.1/ports');
-                } catch (e2) {
-                    serverOnline = false;
-                    console.error('[EMMI] All bridge checks failed. If on HTTPS, ensure "Insecure content" is Allowed for this site.');
+                console.log('[EMMI] Checking bridge at ' + SERVER_URL + endpoint);
+                const r = await fetch(SERVER_URL + endpoint, { signal: AbortSignal.timeout(3000) });
+                if (r.ok) {
+                    serverOnline = true;
+                    console.log('[EMMI] Bridge ONLINE via ' + endpoint);
+                    updateStatus(true);
+                    return true;
                 }
+                // Got a response but not ok (e.g. 503 = bridge down behind proxy)
+                console.warn('[EMMI] Bridge responded with status ' + r.status + ' on ' + endpoint);
+            } catch (e) {
+                console.warn('[EMMI] ' + endpoint + ' failed:', e.name, e.message);
             }
         }
-        updateStatus(serverOnline);
-        return serverOnline;
+        serverOnline = false;
+        console.error('[EMMI] All bridge checks failed. Make sure Start_EMMI_Bridge.bat is running.');
+        updateStatus(false);
+        return false;
     }
 
     function updateStatus(online) {
