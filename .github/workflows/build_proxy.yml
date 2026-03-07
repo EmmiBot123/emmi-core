@@ -29,7 +29,7 @@ jobs:
     - name: Build Proxy Executable
       run: |
         cd emmi
-        pyinstaller --onefile --noconsole emmi_proxy.py
+        pyinstaller --onefile emmi_proxy.py
 
     - name: Package Unified Bridge ZIP
       env:
