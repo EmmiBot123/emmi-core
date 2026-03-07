@@ -1,0 +1,50 @@
+name: Build Windows Proxy Pack
+
+on:
+  push:
+    paths:
+      - 'emmi/emmi_proxy.py'
+      - '.github/workflows/build_proxy.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install PyInstaller
+      run: pip install pyinstaller
+
+    - name: Build Proxy Executable
+      run: |
+        cd emmi
+        pyinstaller --onefile --noconsole emmi_proxy.py
+
+    - name: Package Unified Bridge ZIP
+      run: |
+        mkdir EMMI_Bridge_Proxy_Pack
+        # Copy the original bridge executable
+        copy "emmi\emmi bridge\dist\emmi-bridge.exe" EMMI_Bridge_Proxy_Pack\
+        
+        # Copy the newly built proxy executable
+        copy "emmi\dist\emmi_proxy.exe" EMMI_Bridge_Proxy_Pack\
+        
+        # Copy the startup batch file
+        copy "emmi\Start_EMMI_Bridge.bat" EMMI_Bridge_Proxy_Pack\
+        
+        # Zip them together
+        Compress-Archive -Path "EMMI_Bridge_Proxy_Pack\*" -DestinationPath "EMMI_Bridge_with_Proxy.zip"
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: EMMI_Bridge_with_Proxy
+        path: EMMI_Bridge_with_Proxy.zip
