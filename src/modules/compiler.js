@@ -29,26 +29,39 @@ export const CompilerBridge = (() => {
     }
 
     async function checkServer() {
-        // Try /health first, then /ports as fallback — both go through the proxy on 3457
-        const endpoints = ['/health', '/ports'];
-        for (const endpoint of endpoints) {
-            try {
-                console.log('[EMMI] Checking bridge at ' + SERVER_URL + endpoint);
-                const r = await fetch(SERVER_URL + endpoint, { signal: AbortSignal.timeout(3000) });
-                if (r.ok) {
-                    serverOnline = true;
-                    console.log('[EMMI] Bridge ONLINE via ' + endpoint);
-                    updateStatus(true);
-                    return true;
+        // URLs to try — Chrome may treat 127.0.0.1 and localhost differently for PNA
+        const urls = [
+            'http://127.0.0.1:3457',
+            'http://localhost:3457'
+        ];
+        // Endpoints to try — proxy-health works even if bridge is down
+        const endpoints = ['/proxy-health', '/health', '/ports'];
+
+        for (const base of urls) {
+            for (const ep of endpoints) {
+                try {
+                    const target = base + ep;
+                    console.log('[EMMI] Trying: ' + target);
+                    const r = await fetch(target, {
+                        signal: AbortSignal.timeout(3000),
+                        mode: 'cors'
+                    });
+                    console.log('[EMMI] Response from ' + target + ': status=' + r.status + ' ok=' + r.ok);
+                    if (r.ok) {
+                        serverOnline = true;
+                        console.log('[EMMI] ✅ Bridge ONLINE via ' + target);
+                        updateStatus(true);
+                        return true;
+                    }
+                } catch (e) {
+                    // TypeError = network error / CORS block / PNA block
+                    // AbortError = timeout
+                    console.warn('[EMMI] ❌ ' + base + ep + ' -> ' + e.constructor.name + ': ' + e.message);
                 }
-                // Got a response but not ok (e.g. 503 = bridge down behind proxy)
-                console.warn('[EMMI] Bridge responded with status ' + r.status + ' on ' + endpoint);
-            } catch (e) {
-                console.warn('[EMMI] ' + endpoint + ' failed:', e.name, e.message);
             }
         }
         serverOnline = false;
-        console.error('[EMMI] All bridge checks failed. Make sure Start_EMMI_Bridge.bat is running.');
+        console.error('[EMMI] All bridge checks failed. Is Start_EMMI_Bridge.bat running?');
         updateStatus(false);
         return false;
     }
