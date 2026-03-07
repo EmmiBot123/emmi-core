@@ -48,7 +48,13 @@ jobs:
         # Zip the entire folder for a ready-to-run experience
         Compress-Archive -Path "EMMI_Bridge_Pack\*" -DestinationPath "EMMI_Bridge_with_Proxy.zip"
 
-    - name: Upload Artifact
+    - name: Upload to GitHub Release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release upload v1.0.0 EMMI_Bridge_with_Proxy.zip --clobber
+
+    - name: Upload Artifact (Optional)
       uses: actions/upload-artifact@v4
       with:
         name: EMMI_Bridge_with_Proxy
