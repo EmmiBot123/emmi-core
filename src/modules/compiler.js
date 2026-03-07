@@ -6,7 +6,7 @@
 import { Modal } from './modal.js';
 
 export const CompilerBridge = (() => {
-    const SERVER_URL = 'http://127.0.0.1:3456';
+    const SERVER_URL = 'http://127.0.0.1:3457';
     let serverOnline = false;
 
     const BOARD_FQBN_MAP = {

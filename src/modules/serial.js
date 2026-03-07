@@ -134,8 +134,8 @@ export const SerialBridge = (() => {
         if (!select) return;
 
         let bridgePorts = [];
-        const SERVER_URL = 'http://127.0.0.1:3456';
-        const ALT_URL = 'http://localhost:3456';
+        const SERVER_URL = 'http://127.0.0.1:3457';
+        const ALT_URL = 'http://localhost:3457';
 
         try {
             console.log('[EMMI] Serial: Checking bridge at ' + SERVER_URL + '/ports');
