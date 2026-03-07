@@ -7,6 +7,9 @@ on:
       - '.github/workflows/build_proxy.yml'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -38,6 +41,10 @@ jobs:
         
         # Extract the contents (compilation folder, emmi bridge folder) using 7z
         7z x "temp_download\EMMI_Bridge_Installer.exe" -oEMMI_Bridge_Pack\
+        
+        # DEBUG: List what 7z extracted so we can verify the structure
+        Write-Host "=== Extracted contents ==="
+        Get-ChildItem -Recurse EMMI_Bridge_Pack | Select-Object FullName | Format-Table -AutoSize
         
         # Copy the newly built proxy executable
         copy "emmi\dist\emmi_proxy.exe" EMMI_Bridge_Pack\
